@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="IE=9"> 
+        <title>Verhulst - JMCrew</title>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+        <!-- CSS -->
+        <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300italic,300,400,400italic,700'/>
+        <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel='stylesheet' type='text/css' href="css/main.css"/>
+        
+        <!-- JavaScript -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                TeX: { equationNumbers: { autoNumber: "AMS" } },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+                }
+            });
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+        <script type="text/javascript" src="js/chaoticPopulation.js"></script>
+        <script type="text/javascript" src="js/Cobweb.js"></script>
+        
+        <script type="text/javascript" src="js/bifurcationPlugin.js"></script>
+        <script type="text/javascript" src="js/bifurcation.js"></script>
+        <script type="text/javascript" src="js/bifurcationZoom.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        
+    </head>
+    <body id="verhulstBody">
+        <div class="se-pre-con">
+            <i class="fa fa-spinner fa-spin" style="font-size:64px; color: black;"></i>
+        </div>
+            <!-- HEADER -->
+            <header>
+                <nav class="w3-sidenav w3-card-8" style="display:none;">
+                    <div id="navClose" style="text-align: right">
+                        <i class="fa fa-angle-double-right w3-closenav" onclick="w3_close()" ></i>
+                    </div>
+                        
+                      <div class="w3-card-4 navOption">
+                        <a id="navMandelbrot" href="index.html">Home</a>
+                      </div>
+                      <div class="w3-card-4 navOption accordionHeader">
+                      <a href="#">Verhulst</a>
+                      </div>
+                      <div class="w3-accordion">
+                          <div id="verhulstAccordion" class="w3-accordion-content w3-show">
+                            <a class="w3-card-2 option-accordion-nav" id="ddsNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#dds" 
+                                data-edge-strategy="reset">Maps</a>
+                            <a class="w3-card-2 option-accordion-nav" id="verhulstProcessNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#verhulstProcess" 
+                                data-edge-strategy="reset">Verhulst</a>
+                            <a class="w3-card-2 option-accordion-nav" id="moreVerhulstNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-end="@class:w3-card-2 active"
+                                data-anchor-target="#moreVerhulst" 
+                                data-edge-strategy="reset">Road to Chaos</a>
+                            </div>
+                        </div>
+                      <div class="w3-card-4 navOption" >
+                        <a id="navVerhulst" href="mandelbrot.html">Mandelbrot</a>
+                      </div>
+                      <div class="w3-card-4 navOption">
+                        <a id="navExtension" href="extension.html">Extension</a>
+                      </div>
+                </nav>
+
+                
+
+                <div id="menu" onclick="w3_open()" class="w3-opennav">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </header>
+
+            <!-- SLIDES -->
+            <main id="verhulstMain" class="articleMain">            
+                <section class="slide-5 articleTitle" id="verhulstTitle">
+                    <div class="containerHeader">
+                        <div class="pageHeader" id="verhulstHeader" style="display: none">
+                            <h1>Verhulst Process</h1>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide-6 w3-card-8 articleText" id="verhulstArticle">
+                    <div id="dds" class="chapter">
+                                <h3>Discrete Dynamical System</h3>
+                                <p>
+                                    A <strong>Dynamical System</strong><sup>[<a href="#verhulstReference1">1</a>]</sup>, also known as a <strong>Map</strong> can be defined informally, and without the need to delve into more advanced regions of mathematics, as a way of describing the evolution of a state over fixed time intervals<sup>[<a href="#verhulstReference2">2</a>]</sup>. Such systems are <strong>discrete</strong> when we consider changes over integer intervals. They can be expressed using the general iterative formula:
+                                    \begin{equation}
+                                        x_{n+1} = f(x_n),
+                                    \end{equation} 
+
+                                    where $f$ is a known continuous function and $n \in\mathbb{Z^+}$. Equation $(1)$ is a first order formula as the next value, $x_{n+1}$, depends only on the previous value, $x_{n}$. Equations of this kind can be used to describe the fluctuations of a population over a number of generations. A prime example of the biological applications of discrete dynamical systems is the Verhulst process...
+                                </p>
+                            </div>
+                            <div id="verhulstProcess" class="chapter">
+                                <h3>The Verhulst Process</h3>
+                                <p>
+                                    The <strong>Verhulst Process</strong><sup>[<a href="#verhulstReference3">3</a>]</sup>, developed by French mathematician <i>Pierre-Fran&ccedil;ois Verhulst</i> in the 19<sup>th</sup> century is used model bounded population growth. The formula describing this process can be written as:
+                                    \begin{equation}
+                                    \ x_{n+1} = x_n + rx_n(1-x_n),
+                                    \end{equation} 
+                                    where $x_{n+1}$ is the population of the next generation, $r\in\mathbb{R}_{>0}$ is a fixed parameter, which determines how the population changes and $x_n$ is the current population. This map is one-dimensional as we are only interested in the evolution of a single quantity (the population $x_n$) which in order for it to make physical sense we need to restrict to $x_n \geq 0\ \forall n\in\mathbb{N}$. 
+                                    The parameter $r$ plays a very important role in the evolution of the population or, in more abstract terms, in the evolution of the process and we will examine the impact of the value of $r$ in the iterations, i.e. as $n$ increases.
+                                </p>
+                                    <div class="figure">
+                                        <canvas id="cobwebCanvas" style="border:2px solid" class="w3-card-8" ></canvas>
+                                        <div class="slider" id="sliderRValue" ></div>
+                                        <p style="font-weight:bold;">$x_{n+1} = x_n +  $<span id="RValue"></span>$ x_n(1-x_n)$</p>
+                                        <span class="caption">
+                                            <span class="w3-tooltip"><i class="footnote">Figure 1</i>. A Cobweb plot of the Verhulst process with initial condition $x_0 = 0.1$.
+                                            <span class="w3-text">
+                                            As you move the slider you change the value of the parameter $r$ in the equation for the Verhulst process.
+                                            </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                <p style="text-align: left">
+                                    The graph above, which is an example of a <strong>Cobweb plot</strong>, shows how varying the value of $r$ affects the values of $x_n$ as $n$ becomes <span class="w3-tooltip"><i class="footnote">big</i>.<span class="w3-text">In the graphs we have set the maximum number of iterations to be 1000, in order to be computationally efficient and because a greater number of iterations has a minuscule impact on the graph.</span></span>
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Cobweb Plot:</span> A graph which shows the qualitative behaviour of one-dimensional discrete maps.<sup>[<a href="#verhulstReference4">4</a>]</sup></p>
+                                    </div>
+                                <p>
+                                     As one can easily observe, in the range $0 < r < 2$ as $n$ increases the process <i>converges</i> to a single point but as $r$ becomes greater than 2, in fact as $r$ is in the range $2< r < 2.45$ we see that for <i>big</i> $n$ the process does not remain fixed at one point but it oscillates between two different points. This is an instance of a <i>period-doubling</i> which reoccurs when $r$ becomes greater than 2.45, after which the map oscillates between four points. As $r$ continues to grow, these period doublings get more and more frequent until we reach $r=2.57$, after which the number of points between which the graph oscillates becomes <i>chaotic</i>. The following graph shows a more complete numerical approach to the relation between the value of $r$ and not only the number of fixed points, but also their values. 
+                                </p>
+                                    <div class="figure">
+                                        <canvas id="BifurcationCanvas" style="border:2px solid" class="w3-card-8"></canvas>
+                                        <canvas id="MapCanvas" style="border:2px solid "class="w3-card-8" ></canvas>
+                                        <span class="caption">
+                                            <span class="w3-tooltip"><i class="footnote">Figure 2</i>. Bifurcation plot (left) and it's relation with the fixed points (right).
+                                            <span class="w3-text">
+                                            In the bifurcation plot you can move the slider to shift between values
+                                            of $r$ and observe the results of the change in the Cobweb plot.
+                                            </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                <p>
+                                    For an analytical approach to the relation between the value of $r$ and the number of points between which the graph oscillates we need to introduce a few definitions.
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Fixed Point:</span> A fixed point is a point $\mathbb{X}$ where $\mathbb{X}$ satisfies 
+                                    \begin{equation}
+                                    \mathbb{X} = f(\mathbb{X}) 
+                                    \end{equation}
+                                    for $f$ a discrete dynamical system.<sup>[<a href="#verhulstReference5">5</a>]</sup></p>
+                                    </div>
+                                <p style="text-indent: 0;">
+                                    This point is <i>fixed</i> since $(3)$ implies that after $\mathbb{X}$ we have:
+                                    \begin{equation}
+                                    \ x_{n+1} = x_n 
+                                    \end{equation} 
+                                    So no matter how many times we iterate after the point $\mathbb{X}$ has been reached the population will remain constant.
+                                    In the Verhulst process a fixed point could be found by solving:
+                                    \begin{equation}
+                                    \ \mathbb{X} = \mathbb{X} + r\mathbb{X}(1-\mathbb{X}).
+                                    \end{equation}
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Stable Fixed Point:</span> A fixed point $\mathbb{X}$ is called <i>stable</i> if:
+                                    \begin{equation}
+                                    | \frac{d}{dx} f(\mathbb{X}) | < 1.
+                                    \end{equation}
+                                    If on the other hand:
+                                    \begin{equation}
+                                    | \frac{d}{dx} f(\mathbb{X}) | > 1,
+                                    \end{equation}
+                                    Then the point is called <i>unstable</i>.<sup>[<a href="#verhulstReference6">6</a>]</sup></p>
+                                    </div>
+                                <p style="padding-bottom: 0;">
+                                    Solving equation $(5)$ we can easily determine that the fixed points for the Verhulst process are  $\mathbb{X} = 0$ or $\mathbb{X} = 1$. We can also easily determine $\frac{d}{dx} f(x)$ for the Verhulst process: 
+                                    \begin{equation}
+                                    \frac{d}{dx} f(x) = 1 + r(1-2x).
+                                    \end{equation}
+                                    Now substituting for the two fixed values of $\mathbb{X}$ that we found we get that for $\mathbb{X} = 0$
+                                    \begin{equation}
+                                    | \frac{d}{dx} f(x) | = |1 + r|
+                                    \end{equation}
+                                    and for $\mathbb{X} = 1$:
+                                    \begin{equation}
+                                    | \frac{d}{dx} f(x) | = |1 - r|.
+                                    \end{equation}
+                                    It is clear that for $0 < r < 2$ we have $\mathbb{X} = 0$ is unstable, since $|1 + r|>1$ for $r>0$, however $\mathbb{X} = 1$ is stable since $|1 - r|< 1$ for $r< 2$. But at $r=2$ we can see that both points are unstable. But as we can see from the numerical approach the value of $x_n$ for big $n$ oscillates between two values, so we need to consider more than just the previous iteration. This means that we must have that:
+                                    \begin{equation}
+                                    x_{n+2} = f(x_{n+1}) = f(f(x_n))
+                                    \end{equation}
+                                    i.e.
+                                    \begin{equation}
+                                    \begin{aligned}
+                                    x_{n+2} & = [x_n + rx_n(1-x_n)] + r[x_n + rx_n(1-x_n)][1-x_n - rx_n(1-x_n)]\\
+                                    & = x_n+2rx_n+r^2x_n-2rx_n^2-3r^2x_n^2-r^3x_n^2+2r^2x_n^3+2r^3x_n^3-r^3x_n^4
+                                    \end{aligned}
+                                    \end{equation}
+                                    In order to find the fixed points for $(12)$ we would need to solve: 
+                                    \begin{equation}
+                                    \mathbb{X} = \mathbb{X}+2r\mathbb{X}+r^2\mathbb{X}-2r\mathbb{X}^2-3r^2\mathbb{X}^2-r^3\mathbb{X}^2+2r^2\mathbb{X}^3+2r^3\mathbb{X}^3-r^3\mathbb{X}^4,
+                                    \end{equation}
+                                    this an equation of 4<sup>th</sup> degree, which is normally fairly complicated to solve; however, since the fixed points we had already determined remain fixed points, we already know two of the solutions. This is easy to see by $(3)$ and $(11)$ as, for $\mathbb{X}$ fixed we have:
+                                    \begin{equation}
+                                    f(f(\mathbb{X})) = f(\mathbb{X}) =\mathbb{X}
+                                    \end{equation}
+                                    Now if we go back to $(13)$ we can factor out $\mathbb{X}(\mathbb{X}-1)$ to get:
+                                    \begin{equation}
+                                    \mathbb{X}(\mathbb{X}-1)(-r^3\mathbb{X}^2+\mathbb{X}(r^3+2r^2)-r^2-2r)=0
+                                    \end{equation}
+                                    Solving the quadratic factor gives us:
+                                    \begin{equation}
+                                    \begin{aligned}
+                                    \mathbb{X}_1 &= \frac{r +2 +\sqrt{r^2-4}}{2r} \text{,    and} \\
+                                    \mathbb{X}_2 &= \frac{r +2 -\sqrt{r^2-4}}{2r}
+                                    \end{aligned}
+                                    \end{equation}
+                                    If we look at the derivatives of the two new fixed values $\mathbb{X}_1$ and $\mathbb{X}_2$, keeping in mind that the fact that this is a 2-cycle, i.e. the function oscillates between the two values implies the symmetric relation between :
+
+                                    \begin{equation}
+                                    \begin{aligned}
+                                    f(\mathbb{X}_1)&= \mathbb{X}_2 \text{,    and}\\
+                                    f(\mathbb{X}_2)&= \mathbb{X}_1;
+                                    \end{aligned}
+                                    \end{equation}
+                                    we get that:
+                                    \begin{equation}
+                                    \begin{aligned}
+                                    | \frac{d}{dx}f(f(\mathbb{X}))|_{\mathbb{X}_1,\mathbb{X}_2} & = |f'(\mathbb{X})f'(f(\mathbb{X}))|_{\mathbb{X}_1,\mathbb{X}_2}  \\
+                                    & = |f'(\mathbb{X}_1)f'(\mathbb{X}_2)| \\
+                                    & = |5 - r^2|.
+                                    \end{aligned}
+                                    \end{equation}
+                                     We can then determine that within a specific range of $r$ they are both stable by simply solving:
+                                     \begin{equation}
+                                    \begin{aligned}
+                                    |5 - r^2|< 1 .
+                                    \end{aligned}
+                                    \end{equation}
+                                </p>
+                                <p style="padding-top:0;">
+                                    This gives us that the two points $\mathbb{X}_1 = \frac{r +2 +\sqrt{r^2-4}}{2r} $ and $\mathbb{X}_2 = \frac{r +2 -\sqrt{r^2-4}}{2r}$ are stable for $2< r <\sqrt{6}$, but at $r = \sqrt{6}$ these two points become unstable, so all four points are now unstable. This would indicate another period doubling which we would deal by using similar methods to solve:
+                                    \begin{equation}
+                                    x_{n+4} = f(x_{n+2}) = f(f(f(f(x_n))))=f^{(4)}(x_n)
+                                    \end{equation}
+                                    This time, when trying to find the solutions for the fixed values we would end up with an equation of 16<sup>th</sup> degree of which we only know four solutions this level of mathematics is too intricate for the scope of this investigation.
+                                </p>
+                            <div id="moreVerhulst" class="chapter">
+                                <h3>Road to Chaos...</h3>
+                                <p>
+                                    If we wish to delve deeper into the theory of discrete dynamical systems we will se that the limit of the ratio of consecutive intervals between which a period-doubling occurs gives us the first <strong><a href="extension.html#2d">Feigenbaum Constant</a></strong><sup>[<a href="#verhulstReference5">5</a>]</sup>.
+                                    This process of recurring period-doubling is also known as <i>bifurcation</i> and continues in a similar manner until $r$ reaches the value 2.57, after which the map displays <i>chaotic</i> behaviour. This means that the period-doubling after this point occurs in such a way that the system is able to end up in any value. This can be seen in the second graph, where if we set $r$ to be greater than 2.57 we see that the system, which follows the very simple rule of equation $(2)$ appears to have a random behaviour. This behaviour is all but random, though; it is chaotic. 
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Chaos:</span> Aperiodic, time-asymptotic behaviour in a deterministic system which exhibits sensitive dependencies on initial conditions.<sup>[<a href="#verhulstReference7">7</a>]</sup></p>
+                                    </div>
+                                <p>
+                                    As we can see one of the main properties of chaotic behaviour, and one which we have not examined so far is the <i>initial value sensitivity</i>. Up to now we have kept the initial value of the process fixed to $x_0=0.1$ but we can easily see for $r>2.57$; the long term oscillations of the fixed points change drastically with insignificant changes to the initial condition. Try it:
+                                </p>
+                                    <div class="figure">
+                                        <div class="subfigure w3-card-8" style="border:2px solid">
+                                        <canvas id="PopulationCanvas"></canvas>
+                                            <p style="font-weight:bold;">Initial Values: <span id="InitialValues"></span></p>
+                                            <div class="slider" id="sliderInitialValue"></div>
+
+                                            <p style="font-weight:bold;">R value: <span id="popRValue"></span></p>
+                                            <div class="slider" id="popSliderRValue"></div>
+                                        </div>
+                                        <span class="caption">
+                                            <span class="w3-tooltip"><i class="footnote">Figure 3</i>. Initial value sensitivity of the Verhulst process.
+                                            <span class="w3-text">
+                                            This graph is a bit more involved than the previous ones. Using the upper slider
+                                            you can select two different inital values for the process, by moving either end
+                                            of the slider. The bottom slider is used to change the value of $r$.
+                                            </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                <p style="text-indent: 0;">
+                                    As Edward Norton Lorenz, the American mathematician who discovered <i>deterministic chaos</i>, said:
+                                    <span class="quote"><i class="fa fa-quote-left" style="font-size:1.5rem;"></i><br><span>The present determines the future, but the approximate present does not approximately determine the future.<sup>[<a href="#verhulstReference8">8</a>]</sup></span><i class="fa fa-quote-right" style="font-size:1.5rem; float:right;"></i></span>
+                                    One final thing that can be observed about the map is that it displays a property called self-similarity.
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Self-similarity:</span> The preperty that a geometrical figure has when each portion of the image can be considered a reduced-scale image of the entire figure.<sup>[<a href="#verhulstReference9">9</a>]</sup></p>
+                                    </div>
+                                <p>
+                                    Self-similarity is at the core of the definition of a fractal, in the form of scale invariance. This can be seen in the graph by zooming in at points of the map after the parameter $r$ has caused the behaviour to become chaotic we can see that the graph appears to be the same as the larger scale of itself.
+                                </p>
+                                   <div class="figure">
+                                        <div class="canvases">
+                                            <canvas id="BifurcationZoomCanvas" style="border:2px solid" class="w3-card-8" ></canvas>
+                                            <canvas id="MapZoomCanvas" style="border:2px solid" class="w3-card-8" ></canvas>
+                                            <button style="position: absolute; left: 0%; top: 0%;" class="w3-btn" id="resetButton" onclick="setInitialValues()"><i class="fa fa-refresh" style="color: white;"></i></button>
+                                        </div>
+                                        <span class="caption">
+                                            <span class="w3-tooltip"><i class="footnote">Figure 4</i>. Bifurcation plot (left) and it's relation with the fixed points (right).
+                                            <span class="w3-text">
+                                            Through this graph you can see the fractal properties of the bifucation plot. In
+                                            general the graph is similar to the one one in Figure 2, with the main difference
+                                            that now you can select and isolate a region of the bifurcation plot and zoom into
+                                            it to observe the self similarity. Isolating a region in the left part of the plot
+                                            automatically selects the corresponding region in the right graph.
+                                            </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <center>
+                                        <h5><a href="extension.html">Find out more about chaos...</a></h5>
+                                    </center>
+                            </div>
+                        <hr style="border-color:#2e3842">
+                        <div id="verhulstReferences" class="references">
+                            <h4>References</h4>
+                            <ol type="1">
+                                <li id="verhulstReference1">Wikipedia. Dynamical system - Wikipedia, The Free Encyclopedia; 2016. [Online; accessed 14-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Dynamical_system&oldid=704769798" target="_blank">https://en.wikipedia.org/w/index.php?title=Dynamical_system&oldid=704769798</a>.</li>
+                                <li id="verhulstReference2">Weisstein E. Dynamical System.;. [Online; accessed 13-March- 2016]. From MathWorld - A Wolfram Web Resource. Available from: <a href="http://mathworld.wolfram.com/DynamicalSystem.html" target="_blank">http://mathworld.wolfram.com/DynamicalSystem.html</a>.</li>
+                                <li id="verhulstReference3">Berkshire F. Lecture notes in M1J1. Imperial College London; 2016.</li>
+                                <li id="verhulstReference4">Rechnitzer A. 'Graphical Analysis'. University of British Columbia: Department of Mathematics. Web Resource.; 2003. [Online; accessed 13-March-2016]. Available from: <a href="https://www.math.ubc.ca/~andrewr/620341/pdfs/ga_sum.pdf" target="_blank">https://www.math.ubc.ca/~andrewr/620341/pdfs/ga_sum.pdf</a>.</li>
+                                <li id="verhulstReference5">Kibble T, Berkshire F. Classical Mechanics, 5th edition (greek version). London, UK: Imperial College Press; 2004. p. 360-376.</li>
+                                <li id="verhulstReference6">Lynch S. Dynamical Systems With Applications Using Mathematica. Boston, MA: Birkhauser; 2007. Chapter 12.</li>
+                                <li id="verhulstReference7">Fitzpatrick R. 'The Definition Of Chaos'. Personal Page of Richard Fitzpatrick, at The University of Texas at Austin. Web Re- source.; 2006. [Online; accessed 13-March-2016]. Available from: <a href="http://farside.ph.utexas.edu/teaching/329/lectures/node57" target="_blank">http://farside.ph.utexas.edu/teaching/329/lectures/node57</a>.</li>
+                                <li id="verhulstReference8">Boeing G. 'Chaos Theory And The Logistic Map'. Web Resource.; 2015. [Online; accessed 13-March-2016]. Available from: <a href="http://geoffboeing.com/2015/03/chaos-theory-logistic-map/" target="_blank">http://geoffboeing.com/2015/03/chaos-theory-logistic-map/</a>.</li>
+                                <li id="verhulstReference9">Mandelbrot B. How Long Is the Coast of Britain? Statistical Self- Similarity and Fractional Dimension. Science, New Series. May 5, 1967;156(3775):636-638.</li>
+                            </ol>
+                        </div>
+                </section>
+            </main>
+            
+    </body>
+</html>

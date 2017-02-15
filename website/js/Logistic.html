@@ -1,0 +1,284 @@
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+<canvas id="BifurcationCanvas" width="900" height="600" style="border:2px solid"></canvas>
+<style>#BifurcationCanvas { background-color: rgba(240, 239, 235, 200); }</style>
+<script>
+var elementBifurcation = document.getElementById('BifurcationCanvas');
+var ctxBif = elementBifurcation.getContext('2d');
+var topLeft = new bound(new CNum(-2, -1), new Coord(0,0));;
+var bottomRight = new bound(new CNum(1, 1), null);
+var colour = new RGB(81, 99, 157);
+var imgData;
+var minIterations;
+
+//Hard coded due to Javascript being crap
+
+//Globals
+var portionOfScreen = 0.21;
+var width = Math.round(portionOfScreen * screen.height) * 3;
+var height = Math.round(portionOfScreen * screen.height) * 4;
+var heightWidthRatio = height / width;
+var setMap = new TwoDArray(width, height);
+var mouseUpCoord;
+var imgData = ctxBif.createImageData(width,height/2);
+var x0 = 0.1, minR = -1, maxR = 2, minX = 0, maxX = 1.35;
+var doublePoints;
+    var setMand = new TwoDArray(width, height/2);
+    
+function bound(axis, coord) {
+  this.axis = axis;
+  this.coord = coord;
+}
+
+function CNum(Re, Im){
+  this.Re = Re;
+  this.Im = Im;
+}
+
+function Coord(x, y){
+  this.x = x;
+  this.y = y;
+}
+
+function TwoDArray(x, y) {
+  var a = new Array(width);
+  //Defining array for all coordinates
+  for(var i = 0; i < x; i++){
+    a[i] = new Array(y);
+  }
+  return a;
+}
+
+function f(x, r) {
+  return r*x*(1-x);
+}
+
+function iterate(r, ITERATIONS) {
+  iterations = new Array(ITERATIONS);
+  iterations[0] = f(x0, (1+Math.pow(1+4*r, 0.5)));
+  for (var i = 1; i < ITERATIONS; i++) {
+    iterations[i] = f(iterations[i - 1], (1+Math.pow(1+4*r, 0.5)));
+  }
+  return iterations;
+}
+
+function calculateSet(){
+  var increment = (maxR - minR) / width;
+  var rs = new Array();
+  for (var i = maxR; i > minR; i-= increment){
+    rs.push(iterate(i, 1000));
+  }
+  return rs;
+}
+
+function calculateMap(r) {
+  var increment = (maxX - minX) / height;
+  var xk1 = new Array();
+  for (var x = minX; x < maxX; x+= increment) {
+    xk1.push(f(x, r));
+  }
+  return xk1;
+}
+
+//Starts script
+window.load = initialise();
+function initialise() {
+  elementBifurcation.height = height;
+  elementBifurcation.width = width;
+  set_ = calculateSet();
+  
+  
+    //Mandelbrot
+  minIterations = 255;
+  calculateMandSet();
+  drawSet(set_, imgData, ctxBif);
+  doublePoints = findDoublePoints(set_, 4);
+  var imgMand = drawMandSet(0, 0, width, height);
+  ctxBif.putImageData(imgMand, 0, height/2);
+  drawDoubleLines(ctxBif, doublePoints);
+}
+
+function Coord(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+function TwoDArray(x, y) {
+  var a = new Array(x);
+  //Defining array for all coordinates
+  for(var i = 0; i < x; i++){
+    a[i] = new Array(y);
+  }
+  return a;
+}
+    
+function drawDoubleLines(ctx, points) {
+    ctx.beginPath();
+    ctx.strokeStyle="DarkGreen";
+    ctx.lineWidth=0.5;
+  for (var i = 0; i < points.length; i ++) {
+    ctx.moveTo(points[i], 0);
+    ctx.lineTo(points[i], height);
+  }
+    ctx.stroke();
+}
+
+function drawMap(setMap, imgMap, ctx){ //Parabola
+
+  var scalar = (1/ (maxX - minX)) * height;
+  ctx.lineWidth=2;
+  ctx.strokeStyle="Gray";
+  ctx.beginPath();
+  ctx.setLineDash([]);
+
+  for (var i = 0; i < setMap.length; i++) {
+      ctx.moveTo(i,Math.floor(height - (setMap[i] * scalar)));
+      ctx.lineTo(i+1,Math.floor(height - (setMap[i+1] * scalar)));
+  }
+
+  ctx.stroke();
+}
+
+function drawAxis(ctx, w, h, inc, init) {
+  ctx.beginPath();
+  ctx.setLineDash([]);
+  ctx.strokeStyle = '#fafafa';
+  for (var i = init; i < h; i += h * (inc / (maxX - minX))) {
+    ctx.moveTo(i, 0);
+    ctx.lineTo(i,h);
+    ctx.moveTo(0, i);
+    ctx.lineTo(h,i);
+  }
+  ctx.stroke();
+}
+
+function findDoublePoints(setS, n) {
+  var last, rs = [], n_ = 1, currentPeriod = Math.pow(2, n_), previousLoop, cap = Math.pow(2, n), oldL = 1;
+  for (i = setS.length - 1; i > 0; i--) {
+    last = setS[i].length - 1;
+    var check = true;
+      
+      var found = false;
+      var newL = 0;
+      while(newL < cap && !found) {
+          newL ++;
+          if (equals(setS[i][last], setS[i][last - newL])) {
+              found = true;
+          }
+      }
+      if (oldL != newL) {
+          rs.push(i);
+      }
+      oldL = newL;
+  }
+    return rs;
+}
+
+function equals(a, b) {
+  var epsilon = 0.00001;
+  return Math.abs(a - b) < epsilon;
+}
+
+function drawSet(setBif, imgData, ctx){ //Bifurcation
+
+
+  var currentIterate;
+  for (var i = 0; i < setBif.length; i++) {
+    currentIterate = setBif[i];
+    for (var j = currentIterate.length - 400; j < currentIterate.length; j++) {
+      //Y coordinate
+      k = Math.floor((height - (currentIterate[j] * height))*0.5) * width;
+      //X coordinate
+      k = k + i;
+
+      imgData.data[4*k+0]=46;
+      imgData.data[4*k+1]=56;
+      imgData.data[4*k+2]=66;
+      imgData.data[4*k+3]=50 + Math.pow(imgData.data[4*k+3], 1.5);
+    }
+  }
+  ctx.putImageData(imgData,0,0);
+}
+
+function RGB(red, green, blue) {
+  this.red = red;
+  this.green = green;
+  this.blue = blue;
+}
+    
+function drawMandSet(xStart, yStart, xEnd, yEnd){ //Goes through every coordinates, makes a 1x1 object there and sets it to black if corresponding CoordArray value is true
+    console.log("no")
+	var imgData = ctxBif.createImageData(xEnd,yEnd);
+	var i = 0;
+  var dampener = 3.3;
+
+	for(var y = yStart; y < setMand[0].length; y++){
+		for(var x = xStart; x < setMand.length; x ++){
+          setMand[x][y] = stretchColour(setMand[x][y]);
+            imgData.data[4*i+0]=Math.round(242 - (colour.red / 255)*setMand[x][y] * dampener);
+            imgData.data[4*i+1]=Math.round(241 - (colour.green / 255)*setMand[x][y] * dampener);
+            imgData.data[4*i+2]=Math.round(239 - (colour.blue / 255)*setMand[x][y] * dampener);
+            imgData.data[4*i+3]=200;
+			i ++;
+		}
+	}
+	return imgData
+}
+
+function stretchColour(val) {
+  return (val - minIterations) / (1 - (minIterations / 255));
+}
+
+function RGB(red, green, blue) {
+  this.red = red;
+  this.green = green;
+  this.blue = blue;
+}
+
+function coordinatesToAxis(coordinates){
+  var scale = width / (bottomRight.axis.Re - topLeft.axis.Re);
+	return(new CNum((coordinates.x / scale) + topLeft.axis.Re
+                 ,(coordinates.y / scale) + topLeft.axis.Im));
+}
+
+function axisToCoordinates(axisCoords){
+  var scale = width / (bottomRight.axis.Re - topLeft.axis.Re);
+	return (new Coord(Math.round((axisCoords.Re - topLeft.axis.Re) * scale)
+                   ,Math.round((axisCoords.Im - topLeft.axis.Im) * scale)));
+}
+
+function calculateMandSet() {
+    console.log("no")
+  var tempCoord, tempCNum;
+  for (var x = 0; x < setMand.length; x++) {
+    for (var y = 0; y < setMand[0].length; y++) {
+      tempCoord = new Coord(x, y);
+      tempCNum = coordinatesToAxis(tempCoord);
+      setMand[x][y] = iterateMand(tempCNum);
+      if (setMand[x][y] < minIterations) {
+        minIterations = setMand[x][y];
+      }
+    }
+  }
+  console.log("Min Iterations: " + minIterations);
+  return setMand;
+}
+
+function iterateMand(c) {
+  var tempZ = new CNum(0,0), Z = new CNum(0,0);
+  var valueLimit = 4, iterations = 0, iterationLimit = 255;
+  while((Z.Re*Z.Re+Z.Im*Z.Im) < valueLimit && iterations < iterationLimit){
+		tempZ.Re = Z.Re * Z.Re - Z.Im * Z.Im + c.Re
+		tempZ.Im = 2 * Z.Re * Z.Im + c.Im
+
+		Z.Re = tempZ.Re
+		Z.Im = tempZ.Im
+		iterations ++
+	}
+  return iterations;
+}
+
+</script>
+</html>

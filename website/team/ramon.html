@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="IE=9"> 
+        <title>JMCrew</title>
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+        
+        <!-- CSS -->
+        <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300italic,300,400italic,700'/>
+        <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel='stylesheet' type='text/css' href="../css/main.css"/>
+        
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="../js/skrollr.min.js"></script>
+        <script src="../js/config.js"></script>
+        
+    </head>
+    <body>       
+        <section id="concepts" class="slide-2">
+            <div class="w3-card-2 w3-padding-8 aside" id="profileHeader" style="text-align: center;">
+                <img src="../images/ramonProfile.png" width="250px" height="250px" class="memberProfilePicture w3-circle w3-card-2">
+                <h4>Ramon Fernandez</h4>
+            </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="maincontributions">
+                                <h3>Main contributions</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <ul style="padding-top: 2%;">
+                                <li>"The Mandelbrot Set" page</li>
+                                <li>Research on the applications of 2D maps</li>
+                            </ul>
+                            </article>
+                            <br>
+                </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="textcontributed">
+                                <h3>Text</h3>
+                            </div>
+                            <article class="w3-container aside contributions">
+                            <p>
+
+                                <h3>2 The Mandelbrot Set</h3><br>
+
+                                <h5>2.2 The Mandelbrot Set</h5>
+
+                                <p>The Mandelbrot set [13] is related to the behaviour of following complex one dimensional map over infinite iterations:
+                                zk+1 = zk2 + c where z,c in C and z0 = 0. We say that the Mandelbrot Set is the set of
+                                points c in C that when plugged in Eq. (1), converge as k goes to infinity.</p>
+                                
+                                <p>It is also important to remark what colours mean in this representation. The main light blue area represents the actual points that belong to the set, whereas the gradient of colours from blue to black is given by the number of iterations necessary to reach the escape condition.[14]</p>
+
+                                <p>
+                                <b>Lemma 2.2.1.</b> The escape condition in the Mandelbrot Set is reached when at some point in the iterations the value of |zk|> 2 for some k.
+                                Proof. We intend to prove that |z|> 2 ⇒ |z2 + c|> |z| (i.e. diverges). First suppose that |z|> 2 which, invoking the function definition can be rewritten as |z2 + c|> 2. From the triangle inequality[15] we also know that |z2 + c|+|c|>= |z2|. Therefore:</p>
+
+                                <p>
+                                |z2 + c| >= |z2|-|c| By the triangle inequality.
+                                |z2 + c| > 2|z|-|c| By the assumption that |z|> 2. (*)
+                                Now we need to show that |z|≥ |c| which can be obtained by considering the first iterations:
+                                |z1| = |c|
+                                |z2| = |c2 + c| = |c||c + 1|> |c|
+                                     .
+                                |zn| > |c|
+                                </p>
+
+                                <p>At this point it can easily be deduced that 2|z|-|c| >= |c| from the last result because |z| >= |c| ⇒ |z|-|c|>= 0 ⇒ 2|z|-|c| >= |z| >= |c|. This statement combined with (*) leads us to |z2 + c| > |z|.[16][17]</p>
+                                
+                                <p>Saying that the Mandelbrot set is restricted to |zk| <= 2 is equivalent to saying that all the elements are contained in the disk of radius 2 around the origin, which implies it's bounded. Furthermore, from the lemma just proven, it is obvious that all the limit points[23][24] lie in the set. So we can conclude that the Mandelbrot set is a compact set.
+                                Finally, we'll demonstrate the relationship between the sequence of real points ck = ak + 0i in the Mandelbrot set and the period-doubling cascade ak of the logistic map.</p>
+
+                                <p>
+                                <b>Definition 2.2.4. Logistic map:</b> Recurrence relation of degree 2 of the form xn+1 = rxn(1 - xn).[25]
+                                The relationship between logistic maps and the Mandelbrot set follows from a redefinition of the variables. We need to allow x, r in C and perform the following variable changes:<br>
+                                zn = r(xn - 1)/2<br>
+                                c = (1-(r-1)2)/4<br>
+                                Now, using simple arithmetic we can rewrite the equation: <br>
+                                xn+1 = rxn(1 - xn)<br>
+                                xn+1 = r(1/4 - (xn - 1/2)^2)^2<br>
+                                ...<br>
+                                zn+1 = zn2 + c</p>
+
+                                <p>At this point, we can intuitively deduce that both are representations of the same phenomenon. Let's consider the following graph, which we'll use to deepen our understanding about this relationship.</p>
+                                
+                                <p>It is important to mention that each graph represents in Figure 1 a differ- ent face of the quadratic map. While the Mandelbrot set represents all the points that converge, the logistic bifurcation map gives the actual values of the period-doubling points for every given r. Even though this information is not directly provided by the Mandelbrot set, each cardioid is actually associated to a certain periodicity (as we can see in Figure 3). This fact together with the previous connection found between r and c clarify why every new cardioid found moving along the real axis in the Mandelbrot set represents a period-doubling point.[26][27][28]</p>
+
+                                <h3>4 Extension</h3>
+
+                                <h5>4.3 The algorithm</h5>
+
+                                <p>Based on [43] and [44], consider two independent Tinkerbell maps:
+                                xn+1 =x2n -yn2 +axn +byn yn+1 = 2xnyn + cxn + dyn
+                                x^m+1 = x^2m - ym2 + ax^m + by^m y^m+1 = 2x^my^m + cx^m + dy^m,
+                                in which x0, y0, x^0 and y^0 are determined and used as our generation key. We'll consider a precision of 9 decimal places for these values. The key also includes two different integers N and M which represent the number of ini- tial iterations through each map.</p>
+                                <p>
+                                At this point we proceed in the following way:
+                                <ul>
+                                    <li>Iterate N times the first Tinkerbell map from Eqs. (3).</li>
+                                    <li>Iterate M times the second Tinkerbell map from Eqs. (3).</li>
+                                    <li>We continue with the iterations generating two bits bi and bj given by:
+                                    bi=|floor(yn 10 ^9) mod2| bj=|floor(y^n 10^9) mod2|,
+                                    and ultimately outputing them. It should be mentioned that there are variations of this algorithm such as performing a XOR operation to these bits but won't be considered for this example.</li>
+                                    <li>Return to step 3 until a bit stream of the required size is generated.</li>
+                                </ul>
+                                Definition 4.3.1. Key space: The set of all possible keys that can be used as initial seed in a pseudo-random generator.
+                                It can be inferred from the 6 different keys used that this pseudo-random scheme will have a relatively large key space which the authors B. Stoyanov and K. Kordov estimate at 2138. However, due to the nature of our research, we'll focus on the key sensitivity i.e., how small changes in the initial values cause a big variations in the final result.
+                                </p>
+
+                                <p>
+                                In order to illustrate that, we have created a Python script that simu- lates the generation of 16-bit strings with the arbitrarily chosen initial values x = -0.145622309, y = -0.742799703, x^ = -0.634155080 and y^ = -0.332344590. The initial iterations are set at M = 730 and N = 830. Then:
+                                </p>
+                                
+                                <p>
+                                These results exhibit the sensitivity to initial conditions that chaotic sys- tems and shows why due to their unpredictable behaviour, they can have an application in the field of cryptography.
+                                </p>
+
+                                
+                            </p>
+                            </article>
+                </div>
+                <br>
+                <center>
+                    <h5><a href="../index.html">Go back</a></h5>
+                </center>
+            </section>
+    </body>
+</html>

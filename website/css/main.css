@@ -1,0 +1,727 @@
+
+/* COLORS: 
+    dark-grey: #556270;
+    grey-blue: #2e3842;
+    fb-blue:   rgb(81, 99, 157);
+    orange:    #e67e22;
+    green:     #a2ab58;
+    white:     #f2f1ef;
+*/
+
+/* @font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+}
+@font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+    font-style: italic, oblique;
+}
+@font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+    font-weight: bold;
+    font-style: italic, oblique;
+} */
+
+* {
+    margin:         0;
+    padding:        0;
+    font-size:      100%;
+    font:           inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+html, body {
+    width:            100%;
+    font-family:      "Lato", sans-serif; 
+    font-size:        16pt;
+    letter-spacing:   0.075em;
+    line-height:      1.65em;
+    color:            #2e3842;
+    background-color: #f2f1ef;
+    overflow-x:       hidden;
+}
+
+img {
+    text-align: center;
+}
+
+#indexMain {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Titles colours
+
+#verhulstTitle {
+    background-color: #f2784b;
+}
+
+#mandelbrotTitle {
+    background-color: #a2ab58; 
+}
+
+#extensionTitle {
+    background-color: #3b5998;
+}
+
+*/
+p {
+    font-weight: 300;
+    color: #556270;
+}
+
+h1, h2, h3, h4, h5 {
+    line-height:    1em;
+    color: #f2f1ef;
+    text-transform: uppercase;
+}
+
+#indexMain a {
+    color:           inherit;
+    text-decoration: none;
+}
+
+h1 {
+    font-weight:    600;
+    font-size:      2.5em;
+    letter-spacing: 0.2em;
+    text-align:     center;
+}
+
+h2 {
+    color:          #556270;
+    font-weight:    normal;
+    letter-spacing: 0.15em;
+    font-size:      1.75em;
+    text-align:     center;
+    padding-top:    1%;
+    padding-bottom: 1%;
+    padding-right:  1%;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 1.5em;
+    letter-spacing: 0.125em;
+    padding:   1%;
+    text-transform: none;
+}
+
+h4 {
+    color:          #556270;
+    font-weight:    normal;
+    letter-spacing: 0.15em;
+    font-size:      1.75em;
+    text-align:     center;
+    padding-top:    1%;
+    padding-bottom: 1%;
+    padding-right:  1%;
+}
+
+h5 {
+    color:          #556270;
+    opacity:        0.7;
+    font-weight:    lighter;
+    letter-spacing: 0.15em;
+    font-size:      1.75em;
+    text-align:     center;
+    padding-top:    1%;
+    padding-bottom: 1%;
+    padding-right:  1%;
+}
+
+h5 a {
+    text-decoration: none;
+}
+
+h5:hover {
+    opacity: 1.0;
+}
+
+h6 { /*Sub section*/
+    font-weight: 250;
+    font-size: 1.2em;
+    letter-spacing: 0.12em;
+    text-transform: none;
+}
+
+header {
+    z-index:  3;
+    position: fixed;
+}
+
+#menu {
+    position:    fixed;
+    float:       left;
+    margin:      1rem;
+    font-size:   1.75rem;
+    color:       #f2f1ef;
+    z-index:     1;
+    display:     none;
+}
+
+.w3-sidenav {
+    text-transform: uppercase;
+    z-index: 5;
+    display: block;
+}
+
+
+.w3-sidenav .w3-closenav {
+    padding:     0.25em; 
+    font-weight: 600;
+    font-size:   2em; 
+}
+
+.w3-sidenav .navOption {
+    padding: 0.5rem;
+    display: block;
+    border: none;
+}
+
+.w3-sidenav .navOption:hover, .accordionHeader {
+    background-color: #2e3842;
+    color: #f2f1ef;
+}
+
+.w3-sidenav .navOption a:hover {
+    color: #f2f1ef;
+    background: transparent;
+}
+
+.w3-sidenav .w3-accordion-content {
+    text-align: left;
+    font-size: 90%;
+    background-color: #3e4852;
+    color: #f2f1ef;
+}
+
+.w3-sidenav .w3-accordion-content a {
+    padding-left: 20%;
+}
+
+.w3-sidenav .w3-accordion-content a:hover, .w3-sidenav .w3-accordion-content a.active {
+    border-left: 30px solid #f2f1ef;
+    background-color: inherit;
+}
+
+.container {
+    height: 100%;
+    width:  100%;
+    padding: 0.5rem;
+}
+
+.accelerated {
+
+   -webkit-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
+
+   -webkit-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
+}
+
+/* PRE LOADER */
+.se-pre-con {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    display: table;
+    background-color: #f2f1ef;
+    z-index: 9999;
+}
+
+.se-pre-con i {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.se-pre-con .inner .fa-spinner {
+    color:   black;
+}
+
+
+/* ---------------------------- MAIN --------------------------------- */
+
+/* GLOBAL */
+
+.slideHeader {
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    min-width: 1100px;
+}
+
+.aside {
+    padding-left: 3em;
+}
+
+.containerHeader {
+    overflow: hidden;
+    height: 100%;
+    width:  100%;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.pageHeader {
+    position:          absolute;
+    top:               50%;
+    left:              50%;
+    -webkit-transform: translate(-49.25%, -49.5%);
+    -ms-transform:     translate(-49.25%, -49.5%);
+    transform:         translate(-49.25%, -49.5%);
+    z-index:           1;
+    display: none;
+}
+
+/* HOME SLIDE */
+
+.slide-1 .bcg {
+    background: url('../images/banner01Blur.jpg') 
+                no-repeat fixed;
+    background-position: 0 0;
+    background-size: cover;
+    height: 100%;
+    z-index: -1;
+}
+
+/* CONCEPTS */
+
+.slide-2 #setsHeader {
+    background-color: #f2784b; /* orange */
+}
+
+.slide-2 #mapsHeader {
+    background-color: #a2ab58; /* green */
+}
+
+.slide-2 #fractalsHeader {
+    background-color: #3b5998; /* blue */
+}
+
+.slide-2 p {
+    font-size:120%;
+    padding: 1%;
+    padding-top: 2%;
+}
+
+.slide-2 footer {
+    font-size:      0.9em;
+    padding-bottom: 1%;
+    padding-left:   80px;
+    color:          #95A5A6;
+}
+
+.slide-2 .intro {
+    overflow-y: auto;
+    min-width:  1000px;
+}
+
+/* TEAM */
+
+.slide-3 {
+    background:      url('../images/banner04Blur.jpg') 50% 0 no-repeat fixed;
+    background-size: cover;
+    padding-bottom:  3rem;
+    z-index:         0;
+}
+
+.slide-3 #teamHeader {
+    color: rgba(242, 241, 239, 1);
+    background-color: #2e3842;
+}
+
+.slide-3 #teamHeader h2 {
+    text-align: center;
+    color: #f2f1ef;
+}
+
+.slide-3 #teamText {
+    padding-top: 3rem;
+}
+
+.slide-3 .memberProfile {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    min-width:  900px; 
+    min-height: 200px;
+}
+
+.slide-3 .memberProfileTextBox {
+    background-color: #f2f1ef;
+    border-radius:    25px;
+    display:          table;
+    z-index:          0;
+  width: 100%;
+    position:         relative;
+}
+
+.slide-3 .memberProfileTextHeader {
+    display:     table-row;
+    position:    relative;
+}
+
+.slide-3 .memberProfileText {
+    display:        table-cell;
+    vertical-align: middle;
+}
+
+.right {
+   text-align: right;
+}
+
+.slide-3 .memberProfilePicture {
+    position: absolute;
+    border: 10px solid;
+    z-index: 1;
+}
+
+/* Aris Colors */
+.slide-3 #aris .memberProfileTextHeader {
+    background-color: #f2784b; /* orange */
+}
+.slide-3 #aris .memberProfilePicture {
+    border-color: #f2784b; 
+}
+
+/* Nickolay Colors */
+.slide-3 #nickolay .memberProfileTextHeader {
+    background-color: #a2ab58; /* green */
+}
+.slide-3 #nickolay .memberProfilePicture {
+    border-color: #a2ab58;
+}
+
+/* Rafael Colors */
+.slide-3 #rafa .memberProfileTextHeader {
+    background-color: #3b5998; /* blue */
+}
+.slide-3 #rafa .memberProfilePicture {
+    border-color: #3b5998; /* blue */
+}
+
+/* Ramon Colors */
+.slide-3 #ramon .memberProfileTextHeader {
+    background-color: #f2784b; /* orange */
+}
+.slide-3 #ramon .memberProfilePicture {
+    border-color: #f2784b; 
+}
+
+/* Robbie Colors */
+.slide-3 #robbie .memberProfileTextHeader {
+    background-color: #a2ab58; /* green */
+}
+.slide-3 #robbie .memberProfilePicture {
+    border-color: #a2ab58;
+}
+
+/* SLIDE 4 */
+.slide-4 #approachHeader h2 {
+  text-align: center;
+}
+
+.slide-4 #approachText {
+    min-width: 1000px;
+    display:        table;
+    border-spacing: 1.5rem;
+}
+
+.slide-4 .diagram {
+    background-color: #ECECEC;
+    padding:          1rem;
+    display:          table-cell; 
+    width:            30%;
+}
+
+.slide-4 .diagramHeader {
+    font-weight: 700;
+}
+
+.slide-4 h3 {
+    line-height: 2rem;
+    color:       #2e3842;
+}
+
+.slide-4 .diagramIcon {
+    -webkit-transform: rotate(45deg);
+    -ms-transform:     rotate(45deg);
+    transform:         rotate(45deg);
+    border-radius:     3px;
+    border:            3px #949EA8 solid;
+    width:             6em;
+    height:            6em;
+    margin:            auto;
+    line-height:       3em;
+    position: relative;
+}
+
+.slide-4 .diagramIcon i, .slide-4 #approachMathematicalIcon span {
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-52%, -55%) rotate(-45deg);
+    -ms-transform:     translate(-52%, -55%) rotate(-45deg);
+    transform:         translate(-52%, -55%) rotate(-45deg);
+    
+    position:          absolute;
+/*     display:           table-cell;
+    vertical-align:    middle; */
+    font-size:         3.5em;
+}
+
+.slide-4 .diagramIcon .fa-code {
+    color: rgba(230, 126, 34, 0.7); /* more opaque orange */
+}
+
+.slide-4 .diagramIcon .fa-binoculars {
+    color: rgba(81, 99, 157, 0.7);
+}
+
+.slide-4 #approachMathematicalIcon span {
+    display: block;
+    -webkit-transform: rotate(-45deg) translate(0%, -85%);
+    -ms-transform:     rotate(-45deg) translate(0%, -85%);
+    transform:         rotate(-45deg) translate(0%, -85%);
+
+    color:       rgba(162, 171, 88, 0.7);
+    font-family: Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+    font-style:  italic;
+    font-size:   2.75em;
+}
+
+.slide-4 .diagramText {
+    padding: 5%;
+}
+
+
+/* ----------------------------- VERHULST ---------------------------- */
+
+.articleMain {
+    font-size:        100%;
+    letter-spacing:   0.055rem;
+    z-index: -1;
+    color: #556270;
+    background-color: #ECECEC;
+}
+
+.slide-5 {
+    background-color: #2e3842;
+    color:   #f2f1ef;
+    padding: 0;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
+.slide-6 {
+    position: relative;
+    z-index: 1;
+}
+
+.articleText {
+    width: 1200px;
+    margin: auto;
+    background-color: #f2f1ef;
+    text-align: justify;
+    overflow: hidden;
+}
+
+.articleText p {
+    padding: 3% 0;
+    text-indent: 3em;
+    z-index: 2;
+    position: relative;
+}
+
+.articleText h3 {
+    color: #2e3842;
+    text-align: center;
+    padding: 0.5em;
+    padding-top: 1em;
+    font-size: 2em;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    border-bottom: 3px #2e3842 solid;
+}
+
+.articleText h4 {
+    color: #2e3842;
+}
+
+.articleText h5 {
+    font-size: 1.3rem;
+    text-align: center;
+    color: #556270;
+}
+
+.contributions h3 {
+    color: #2e3842;
+    border-bottom: 3px #2e3842 solid;
+}
+
+.contributions h5 {
+    text-align: left;
+    color: #2e3842;
+    opacity: 0.8;
+    font-size: 1rem;
+}
+
+.articleText .figure {
+    text-align: center;
+    position: relative;
+    z-index: 3;
+}
+
+.articleText .figure .slider {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.articleText .figure .subfigure {
+    padding-bottom: 1rem;
+    display: block;
+}
+
+.articleText .figure .canvases {
+    position: relative;
+    display: block;
+}
+
+.articleText .figure img {
+    display: block;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.articleText .figure .caption {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: block;
+}
+
+.slider {
+    margin: auto;
+}
+
+i {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.footnote {
+    margin: 0.1rem;
+    cursor: default;
+    color: #a2ab58;
+    border-bottom: 1px dotted rgba(46,56,66, 0.5);
+}
+
+.caption .footnote, .caption i {
+    font-weight: 700;
+}
+
+#BifurcationZoomCanvas, #BifurcationCanvas, #MapZoomCanvas, #MapCanvas { 
+    background-color: #f2f1ef;
+    cursor: crosshair;
+}
+
+#MandelbrotCanvas {
+    margin: auto;
+}
+
+.articleText .w3-text {
+    margin: 2%;
+    padding: 3%;
+    border: 2px solid rgba(46,56,66, 0.5);
+    background-color: rgb(232,231,230);
+}
+
+.footUp {
+    position: absolute;
+    right: -25%;
+    bottom: 1.2rem;
+    text-align: left;
+}
+
+.footDown {
+    position: absolute;
+    left: 12%;
+    width: 500px;
+    top: 1.2rem;
+    text-align: left;
+}
+
+.definition {
+    padding-left: 3em;
+    border-left: 5px solid;
+}
+
+.definition p {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+}
+
+.quote {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-bottom:1%;
+    padding: 1%;
+    padding-bottom: 2rem;
+}
+
+.quote span {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: inline-block;
+}
+
+.references {
+    padding: 2%;
+    text-align: left;
+    font-size: 90%;
+}
+
+.references ol {
+    padding-left: 5%;
+}
+
+#teamText div:hover {
+    cursor: pointer;
+}
+
+/* Personal pages */
+
+#maincontributions {
+    background-color: #f2784b; /* orange */
+}
+
+#textcontributed {
+    background-color: #a2ab58; /* green */
+}
+
+li {
+    font-weight: lighter;
+    text-decoration: none;
+}
+

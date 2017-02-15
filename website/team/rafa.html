@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="IE=9"> 
+        <title>JMCrew</title>
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+        
+        <!-- CSS -->
+        <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300italic,300,400italic,700'/>
+        <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel='stylesheet' type='text/css' href="../css/main.css"/>
+        
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="../js/skrollr.min.js"></script>
+        <script src="../js/config.js"></script>
+        
+    </head>
+    <body>       
+        <section id="concepts" class="slide-2">
+            <div class="w3-card-2 w3-padding-8 aside" id="profileHeader" style="text-align: center;">
+                <img src="../images/rafaProfile.png" width="250px" height="250px" class="memberProfilePicture w3-circle w3-card-2">
+                <h4>Rafael Ballestiero</h4>
+            </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="maincontributions">
+                                <h3>Main contributions</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <ul style="padding-top: 2%;">
+                                <li>Website general design.</li>
+                                <li>Research on the Verhulst process.</li>
+                            </ul>
+                            </article>
+                            <br>
+                </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="textcontributed">
+                                <h3>Text</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <p>
+                                <h4>1 The Verhulst Process</h4>
+                                <h6>1.1 Discrete Dynamical System</h6>
+
+                                <p>A Dynamical System[1], also known as a Map can be defined informally, and without the need to delve into more advanced regions of mathematics, as a way of describing the evolution of a state over fixed1 time intervals[2]. Such systems are discrete when we consider changes over integer intervals. They can be expressed using the general iterative formula:<br>
+                                xn+1 = f(xn), (1) <br>
+                                where f is a known continuous function and n in Z+. Equation (1) is a first order formula as the next value, xn+1, depends only on the previous value, xn. Equations of this kind can be used to describe the fluctuations of a population over a number of generations. A prime example of the biological applications of discrete dynamical systems is the Verhulst process..<p>
+
+                                <h6>1.2 The Verhulst Process</h6>
+                                <p>The Verhulst Process[3], developed by French mathematician Pierre-Franois Verhulst in the 19th century is used model bounded population growth. The formula describing this process can be written as:<br>
+                                xn+1 = xn + rxn(1 - xn), (2)<br>
+                                1Depending on the applications of the formulae (e.g. in Biology) the intervals need not be of equal length where xn+1 is the population of the next generation, r in R>0 is a fixed parameter, which determines how the population changes and xn is the current population. This map is one-dimensional as we are only interested in the evolution of a single quantity (the population xn) which in order for it to make physical sense we need to restrict to xn >= 0 for all n in N. The parameter r plays a very important role in the evolution of the population or, in more abstract terms, in the evolution of the process and we will examine the impact of the value of r in the iterations, i.e. as n increases.
+                                Figure 1: A Cobweb plot of the Verhulst process with initial condition x0 = 0.1.</p>
+
+                                <p>The graph above, which is an example of a Cobweb plot, shows how varying the value of r affects the values of xn as n becomes big2.
+                                Definition 1.2.1. Cobweb Plot: A graph which shows the qualitative be- haviour of one-dimensional discrete maps. [4]
+                                As one can easily observe, in the range 0 < r < 2 as n increases the process converges to a single point but as r becomes greater than 2, in fact as r is in the range 2 < r < 2.45 we see that for big n the process does not remain fixed at one point but it oscillates between two different points This is an instance of a period-doubling which reoccurs when r becomes greater than 2.45, after which the map oscillates between four points. As r continues to grow these period doublings get more and more frequent, until we reach r = 2.57, after which the number of points between which the graph oscillates becomes chaotic. The following graph shows a more complete numerical approach to the relation between the value of r and not only the number of fixed points, but also their values.
+                                
+                                <p>For an analytical approach to the relation between the value of r and the number of points between which the graph oscillates we need to introduce a few definitions.</p>
+
+                                <p><b>Definition 1.2.2. Fixed Point:</b> A fixed point is a point X where X satisfies X = f(X) (3)
+                                for f a discrete dynamical system.[5] This point is fixed since (3) implies that after X we have:<br>
+                                xn+1 = xn (4)</p>
+                                
+                                <p>So no matter how many times we iterate after the point X has been reached the population will remain constant. In the Verhulst process a fixed point could be found by solving:<br>
+                                X = X+rX(1 - X). (5)</p>
+
+                                <p><b>Definition 1.2.3.</b> Stable Fixed Point: A fixed point X is called stable if:
+                                | d/dx f(X)| < 1. (6)<br>
+                                If on the other hand:<br>
+                                | d/dx f(X)| > 1, (7)<br>
+                                Then the point is called unstable[6]<br></p>
+
+                                <p>Solving equation (5) we can easily determine that the fixed points for the
+                                Verhulst process are X = 0 or X = 1. We can also easily determine d/dx f(x)
+                                for the Verhulst process:<br>
+                                d/dx f(x)=1+r(1-2x). (8)
+                                (8) Now substituting for the two fixed values of X that we found we get that for
+                                ￼X=0 | d/dx f(x)|=|1+r| (9) and for X = 1: | d/dx f(x)|= |1 - r| (10).</p>
+                                <p>It is clear that for 0 < r < 2 we have X = 0 is unstable, since |1 + r|> 1 for r>0,howeverX=1isstablesince|1-r|< 1 for r < 2. Butatr=2we can see that both points are unstable. But as we can see from the numerical approach the value of xn for big n oscillates between two values, so we need to consider more than just the previous iteration. This means that we must have that:<br>
+                                xn+2 = f(xn+1) = f(f(xn)) (11) xn+2 = [xn +rxn(1-xn)]+r[xn +rxn(1-xn)][1-xn -rxn(1-xn)]
+                                = xn + 2rxn + r2xn - 2rx2n - 3r2x2n - r3x2n + 2r2x3n + 2r3x3n - r3x4n (12)<br>
+                                In order to find the fixed points for (12) we would need to solve:<br>
+                                X = X+2rX+r2X-2rX2 -3r2X2 -r3X2 +2r2X3 +2r3X3 -r3X4, (13)<br>
+                                this an equation of 4th degree, which is normally fairly complicated to solve, however, since the fixed points we had already determined remain fixed points, we already know two of the solutions. This is easy to see by (3) and (11) as, for X fixed we have:<br>
+                                f(f(X)) = f(X) = X (14) <br>
+                                Now if we go back to (13) we can factor out X(X-1) to get:<br>
+                                X(X-1)(-r3X2 +X(r3 +2r2)-r2 -2r) = 0 (15) <br>
+                                Solving the quadratic factor gives us:<br>
+                                X1 = (r + 2 + sqrt(r2 - 4))/2r, and <br>
+                                X2 = (r + 2 - sqrt(r2 - 4))/2r (16) <br>
+                                ￼￼If we look at the derivatives of the two new fixed values X1 and X2, keeping in mind that the fact that this is a 2-cycle, i.e. the function oscillates between the two values implies the symmetric relation between:<br>
+                                f(X1) = X2, and f(X2) = X1;<br> (17)
+                                we get that:
+                                | d/dx f(f(X))|X1,X2 = |f'(X)f'(f(X))|X1,X2<br>
+                                = |f'(X1)f'(X2)| (18)<br>
+                                = |5 - r2|.<br>
+                                We can then determine that within a specific range of r they are both stable by simply solving:<br>
+                                |5 - r2|< 1. 2r (19)<br>
+                                This gives us that the two points X1 = (r + 2 + sqrt(r2 - 4))/2r and X2 = (r + 2 - sqrt(r2 - 4))/2r are stable for 2 < r < 6, but at r = 6 these two points become unstable, so all four points are now unstable. This would indicate another period doubling which we would deal by using similar methods to solve:<br>
+                                xn+4 = f(xn+2) = f(f(f(f(xn)))) = f(4)(xn) (20)<br>
+                                This time, when trying to find the solutions for the fixed values we would end up with an equation of 16th degree of which we only know four solutions this level of mathematics is too intricate for the scope of this investigation. If we wish to delve deeper into the theory of discrete dynamical systems we will se that the limit of the ratio of consecutive intervals between which a period-doubling occurs gives us the first Feigenbaum Constant[5].</p>
+                                
+                            </p>
+                            </article>
+                </div>
+                <br>
+                <center>
+                    <h5><a href="../index.html">Go back</a></h5>
+                </center>
+            </section>
+    </body>
+</html>

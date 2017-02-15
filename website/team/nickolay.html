@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="IE=9"> 
+        <title>JMCrew</title>
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+        
+        <!-- CSS -->
+        <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300italic,300,400italic,700'/>
+        <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel='stylesheet' type='text/css' href="../css/main.css"/>
+        
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="../js/skrollr.min.js"></script>
+        <script src="../js/config.js"></script>
+        
+    </head>
+    <body>       
+        <section id="concepts" class="slide-2">
+            <div class="w3-card-2 w3-padding-8 aside" id="profileHeader" style="text-align: center;">
+                <img src="../images/nickProfile.png" width="250px" height="250px" class="memberProfilePicture w3-circle w3-card-2">
+                <h4>Nickolay Daminov</h4>
+            </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="maincontributions">
+                                <h3>Main contributions</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <ul style="padding-top: 2%;">
+                                <li>Confection of the team members pages</li>
+                                <li>Research on the applications of 2D maps</li>
+                            </ul>
+                            </article>
+                            <br>
+                </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="textcontributed">
+                                <h3>Text</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <p>
+                            <h6>Extension 3: 3.3.2 Communication Using Chaos Encryption</h6>
+                                <p>Edward Lorenz proposed the now famous system of three coupled differential equations:[45][46][47]<br>
+                                dx/dt = σ(y - x) <br>
+                                dy/dt =x(ρ-z)-y  <br>
+                                dz/dt = xy - betaz (38)<br>
+                                In 1963, as a simplified model of heat transfer in a slab of fluid[5]. We will not offer a more thourough analysis of this system, as our focus lies mainy in discrete systems but the significance of this system in chaos theory should not be overlooked. It was through this system and the variations in its initial conditions that Lorenz first discovered what we now know as chaos theory. The system displays both an initial value sensitivity and a chaotic attractor (the phase portrait of the trajectories resembles a butterfly in x, y, z).</p>
+
+                                <p>
+                                The Henon map which we have already examined is a simplification of the Poincar ́e section4 of the Lorenz system[45] and H ́enon developed his map as a way of more easily visualizing the Lorenz System[49] . This explains why the two systems are so closely related and why they both display strange attractor properties for specific initial values.</p>
+
+                                <p>
+                                A modern approach of applying Chaos Theory to the field of cryptography, was discovered in the early 1990[50] . Louis Pecora and Thomas Carrol described the Synchronization Properties5 of Chaotic systems and found a theoretical application of this property in secure communication[51]. The very idea of two chaotic systems being synchronized was doubted for a long time as the main argument was that the key property of a chaotic system is that it is highly dependent on the initial conditions.
+                                </p>
+                                <p>
+                                Chaotic encryption is an example of symmetric encryption[52] with a system involving a sender,receiver and a key shared by both parties. Lorenz’s equations serve as the chaotic system for this method[53] , with the key as the three constants beta, ρ, σ. The Senders Lorenz system, A, iterates with time as usual. The Receiver’s Lorenz System, B, is slightly different and is governed by following equations:<br>
+                                dXA/dt =σ(YA-XA)<br>
+                                dYA/dt =XA(ρ-ZA)-YA <br>
+                                dYA/dt =XAYA-betaZA (39)<br>
+                                Notice that instead of B using its own XB, it uses the X value of A, XA. Surprisingly this input alone causes them to be synchronised, despite differ- ing initial conditions.<br>
+                                Once systems are synchronised we can begin to send our message, M. Now, instead of using XA as an input for B, we send S = M +XA, keeping M relatively small compared to XA. Now M is masked by the chaotic variable XA. Anyone intercepting the message would be unable to extract the orig- inal message M. Despite the random input of M to B, synchronisation is preserved. After B has iterated with S as XA, the original message can be founded by subtracting the new value of XB which is equal to the value if XA after a single iteration from S, as seen below:
+                                ￼￼￼S = XA + M and lim XB = XA give t tends to infinity.<br>
+                                M = XB - S, (40)<br>
+                                where the time t is directly proportional the number of iterations. Thus, the chaotic element of S, namely Xt is removed to reveal the original message. We implemented this by encrypting images using the Lorenz attractor with values:<br>
+                                σ = 10 <br>
+                                ρ = 28<br>
+                                beta=8 (41)<br>
+                                
+                                This applet link allows the user to choose the number of iterations used to synchronise A and B before transmission begins. Observe that if they are not allowed to synchronise for long enough, the message is lost in transmission and the recovered image is incomplete. Since (39) cannot be analytically solved, the applet uses Euler’s method extended to 3D[54] .
+                                </p>
+                            </p>
+                            </article>
+                </div>
+                <br>
+                <center>
+                    <h5><a href="../index.html">Go back</a></h5>
+                </center>
+            </section>
+    </body>
+</html>

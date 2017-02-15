@@ -1,0 +1,164 @@
+<html>
+<canvas id="MapCanvas" width="600" height="600" style="border:2px solid"></canvas> <br>
+<style>#MapCanvas { background-color: #f2f1ef; }</style>
+<script>
+{
+var elementMap = document.getElementById('MapCanvas');
+var ctxMap = elementMap.getContext('2d');
+var widthPortion = 0.5, heightPortion = 0.5;
+var map2DInfo = new Map2D(screen.width * widthPortion, screen.height * heightPortion, 80000);
+var imgData = ctxMap.createImageData(map2DInfo.width,map2DInfo.height);
+var HenonMapInfo = new Henon(1.4, 0.3, new Coord(0, 0), 0.4287, 0.3625, 0.27, 0.2535);
+  HenonMapInfo = new Henon(1.4, 0.3, new Coord(0, 0), 1.45, -1.45, 0.45, -0.45);
+var GingerbreadInfo = new Gingerbread(new Coord(-0.5, -0.5), 8.5, -8.5, 8.5, -8.5);
+}
+
+//Starts script
+window.load = initialise();
+function initialise() {
+  elementMap.width = map2DInfo.width;
+  elementMap.height = map2DInfo.height;
+  
+//  generateMap(HenonMap, HenonMapInfo, map2DInfo, new RGB(255, 0, 0));
+//  HenonMapInfo = new Henon(1.4, 0.3, new Coord(1, 1), 1.45, -1.45, 0.45, -0.45);
+//  generateMap(HenonMap, HenonMapInfo, map2DInfo, new RGB(30, 30, 30));
+  generateMap(GingerbreadMap, GingerbreadInfo, map2DInfo, new RGB(255, 0, 0));
+  drawAxis(ctxMap, map2DInfo.height / 20, 0, GingerbreadInfo, map2DInfo);
+  
+}
+  
+function HenonMap(coord) {
+  return new Coord(1 - HenonMapInfo.A * coord.x * coord.x + coord.y, HenonMapInfo.B * coord.x);
+}
+  
+function GingerbreadMap(coord) {
+  return new Coord(1 - coord.y + Math.abs(coord.x), coord.x);
+}
+
+function Coord(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+function generateMap(map, mapInfo, drawInfo, rgb) {
+  var currentCoord = mapInfo.initialCoord, k;
+  for (var i = 0; i < drawInfo.iterations; i++) {
+      //Y coordinate
+        k = Math.floor((currentCoord.y - mapInfo.minY) * drawInfo.height / (mapInfo.maxY - mapInfo.minY));
+      k = (drawInfo.height - k) * drawInfo.width;
+      //X coordinate
+        k = k + Math.round(drawInfo.width * (currentCoord.x - mapInfo.minX) / (mapInfo.maxX - mapInfo.minX));
+    imgData.data[4*k+0]=rgb.red;
+    imgData.data[4*k+1]=rgb.green;
+    imgData.data[4*k+2]=rgb.blue;
+    imgData.data[4*k+3]=100 + imgData.data[4*k+3];
+    {
+    //Y coordinate
+        k = Math.floor(1 + (currentCoord.y - mapInfo.minY) * drawInfo.height / (mapInfo.maxY - mapInfo.minY));
+      k = (drawInfo.height - k) * drawInfo.width;
+      //X coordinate
+        k = k + Math.round(drawInfo.width * (currentCoord.x - mapInfo.minX) / (mapInfo.maxX - mapInfo.minX));
+    imgData.data[4*k+0]=rgb.red;
+    imgData.data[4*k+1]=rgb.green;
+    imgData.data[4*k+2]=rgb.blue;
+    imgData.data[4*k+3]=255 + imgData.data[4*k+3];
+    
+    //Y coordinate
+        k = Math.floor((currentCoord.y - mapInfo.minY) * drawInfo.height / (mapInfo.maxY - mapInfo.minY));
+      k = (drawInfo.height - k) * drawInfo.width;
+      //X coordinate
+        k = k + 1 + Math.round(drawInfo.width * (currentCoord.x - mapInfo.minX) / (mapInfo.maxX - mapInfo.minX));
+    imgData.data[4*k+0]=rgb.red;
+    imgData.data[4*k+1]=rgb.green;
+    imgData.data[4*k+2]=rgb.blue;
+    imgData.data[4*k+3]=255 + imgData.data[4*k+3];
+    
+    //Y coordinate
+        k = Math.floor(1 + (currentCoord.y - mapInfo.minY) * drawInfo.height / (mapInfo.maxY - mapInfo.minY));
+      k = 1 + (drawInfo.height - k) * drawInfo.width;
+      //X coordinate
+        k = k + Math.round(drawInfo.width * (currentCoord.x - mapInfo.minX) / (mapInfo.maxX - mapInfo.minX));
+    imgData.data[4*k+0]=rgb.red;
+    imgData.data[4*k+1]=rgb.green;
+    imgData.data[4*k+2]=rgb.blue;
+    imgData.data[4*k+3]=255 + imgData.data[4*k+3];
+  }
+    currentCoord = map(currentCoord);
+  }
+  ctxMap.putImageData(imgData,0,0);
+}
+  
+//Axis for Map
+function drawAxis(ctx, inc, init, mapInfo, map2DInfo) {
+  var boldLineSpaces = 5;
+  ctx.beginPath();
+  ctx.setLineDash([]);
+  ctx.strokeStyle = "#556270";
+  console.log(map2DInfo.height * (inc / (mapInfo.maxX - mapInfo.minX)));
+  for (var i = init; i < map2DInfo.width; i += inc) {
+    ctx.lineWidth=0.25;
+    ctx.moveTo(i, 0);
+    ctx.lineTo(i,map2DInfo.height);
+    ctx.moveTo(0,map2DInfo.height - i);
+    ctx.lineTo(map2DInfo.width,map2DInfo.height - i);
+  }
+  ctx.stroke();
+  
+  ctx.beginPath();
+  ctx.lineWidth = 0.5;
+  for (var i = 0; i < map2DInfo.height; i += boldLineSpaces * map2DInfo.height * (inc / (mapInfo.maxX - mapInfo.minX))) {
+    ctx.font="16px Arial";
+    ctx.fillText("Y", map2DInfo.width/2 - 12, 13);
+    ctx.fillText("X",  map2DInfo.width - 10, map2DInfo.height/2 +15);
+    ctx.font="11px Arial";
+    ctx.moveTo(i, 0);
+    ctx.lineTo(i,map2DInfo.height);
+    ctx.moveTo(0,map2DInfo.height - i);
+    ctx.lineTo(map2DInfo.height,map2DInfo.height - i);
+  }
+
+  ctx.stroke();
+  ctx.lineWidth=0.3;
+    ctx.moveTo(map2DInfo.width/2, 0);
+    ctx.lineTo(map2DInfo.width/2,map2DInfo.height);
+    ctx.moveTo(0,map2DInfo.height/2);
+    ctx.lineTo(map2DInfo.width,map2DInfo.height/2);
+  ctx.font="11px Arial";
+  ctxMap.fillText("(" + 0 + "," + (mapInfo.minY).toFixed(4) + ")",map2DInfo.width/2, map2DInfo.height - 4);
+  ctxMap.fillText("(" + mapInfo.maxX + "," + 0 + ")",map2DInfo.width - 38, map2DInfo.height/2 - 3);
+  ctxMap.fillText("(" + 0 + "," + mapInfo.maxY + ")",map2DInfo.width/2, 10);
+  ctxMap.fillText("(" + mapInfo.minX + "," + 0 + ")", 0, map2DInfo.height/2 - 3);
+  ctx.stroke();
+}
+
+function Map2D(width, height, iterations) {
+  this.width = width;
+  this.height = height;
+  this.iterations = iterations;
+}
+  
+function Gingerbread(initialCoord, maxX, minX, maxY, minY) {
+  this.initialCoord = initialCoord;
+  this.maxX = maxX;
+  this.minX = minX;
+  this.maxY = maxY;
+  this.minY = minY;
+}
+  
+function Henon(A, B, initialCoord, maxX, minX, maxY, minY) {
+  this.A = A;
+  this.B = B;
+  this.initialCoord = initialCoord;
+  this.maxX = maxX;
+  this.minX = minX;
+  this.maxY = maxY;
+  this.minY = minY;
+}
+  
+function RGB(red, green, blue) {
+  this.red = red;
+  this.green = green;
+  this.blue = blue;
+}
+</script>
+</html>

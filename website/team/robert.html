@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="IE=9"> 
+        <title>JMCrew</title>
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+        
+        <!-- CSS -->
+        <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300italic,300,400italic,700'/>
+        <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel='stylesheet' type='text/css' href="../css/main.css"/>
+        
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="../js/skrollr.min.js"></script>
+        <script src="../js/config.js"></script>
+        
+    </head>
+    <body>       
+        <section id="concepts" class="slide-2">
+            <div class="w3-card-2 w3-padding-8 aside" id="profileHeader" style="text-align: center;">
+                <img src="../images/robbieProfile.png" width="250px" height="250px" class="memberProfilePicture w3-circle w3-card-2">
+                <h4>Robert Holland</h4>
+            </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="maincontributions">
+                                <h3>Main contributions</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <ul style="padding-top: 2%;">
+                                <li>Generation of the interactive graphs.</li>
+                                <li>Research on logisitc maps.</li>
+                            </ul>
+                            </article>
+                            <br>
+                </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="textcontributed">
+                                <h3>Text</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <p>
+                                <b>Definition 2.2.1. Compact set:</b> A set is compact if it's both bounded and closed.[18][19]<br>
+                                <b>Definition 2.2.2. Bounded set:</b> A set is bounded if all the points in the set lie within some fixed distance from one another.[20]<br>
+                                <b>Definition 2.2.3. Closed set:</b> A set is closed if it is closed under the limit operation.[21][22]
+                            </p>
+
+                            <h5>2.1 Introduction</h5>
+
+                                <p>The interest in fractal geometry initially arose from the observation of self-similar patterns in nature. One of the first mathematicians who referenced the idea of self-similarity was Leibniz in the 17th century. However, the con- cept of fractals as we understand them now was not developed until two centuries later. We could highlight for instance the work of Georg Cantor on the Cantor set or the contributions of Helge von Koch, who geometrically exemplified the phenomenon with the so called Koch snowflake. The field of fractal geometry kept evolving, with more abstract approaches such as extending the idea to multiple dimensions.[10]</p>
+                                
+                                <p>These advances eventually led us to the mathematical object at issue: The Mandelbrot Set, discovered in 1979 by the mathematician Benot Man- delbrot. Author of the famous paper How Long Is the Coast of Britain? Statistical Self-Similarity and Fractional Dimension[9], he worked as a re- searcher at IBM and it was thanks to the powerful computers he had at his disposition that he could plot this emblem of mathematics.[11][12]</p>
+
+                            <h3>3 Extension 3.2 Examples</h3>
+                                <h6>3.2.1 Additions in the Verhulst map</h6>
+                                <p>
+                                There was a passing reference to the Feigenbaum Constants in the previous section. Although this concept is unrelated to chaotic maps of higher than one dimension, it is a universal characteristic of one-dimensional maps.[6][33] As it is much harder to find and prove universal characteristics in higher dimensional maps, we thought that it would be of significance to explore in more detail such characteristics in one-dimensional maps.
+                                </p>
+
+                                <p><b>Definition 3.2.1.1. Universality:</b> The existence of properties that appear in a large class of dynamical systems, independent of each system itself.[34]</p>
+                                <p>
+                                
+                                <p>
+                                In a previous section we defined one-dimensional systems as:<br>
+                                xn+1 = f(xn), (28)<br>
+                                but universal properties render f superfluous.<br>
+                                The two Feigenbaum constants delta and alpha are universal constants for functions approaching chaos through continuous bifurcations.
+                                <p><b>Definition 3.2.1.2. First Feigenbaum Constant (delta):</b> The limit of the length of r intervals between consecutive bifurcations.[35]
+                                </p>
+                                <p>
+                                This number offers us a geometric understanding of the period doubling in the Logistic map. We can express delta through the formula:<br>
+                                delta = lim i+1 [5], (29) i tends to infinity (Triangle)i<br>
+                                where (Triangle)i is the intervals between the ith and the (i-1)th period-doubling and (Triangle)i+1 the interval between the (i+1)th and the ith period doubling. We can easily show with numerical methods on our map that delta does indeed tend to the value that Feigenbaum determined, i.e.:<br>
+                                delta = 4.6692016091...[36] (30)<br>
+                                The importance of this value should not be overlooked. Intuitively delta says that one-dimensional systems such as the ones we have examined all go to chaos at the same rate. The second Feigenbaum constant alpha involves the lengths of successive tines in the bifurcation plot and has been determined to be:<br>
+                                alpha = 2.502907850958...[37] (31)<br> 
+                                The universality of the two constants has been proven and the original proof
+                                involved the aid of a computer system.[38]<br>
+                                </p>
+
+                                <h6>3.2.2 Henon map</h6>
+                                <p>
+                                The first two-dimensional map we will examine is the H ́enon map, which models the evolution of two variables, xn and yn by the following system of equations:<br>
+                                xn+1 = 1 + yn + Axn^2 <br>
+                                yn+1 = Bxn,<br>
+                                where A and B are fixed parameters. Despite mentioning beforehand that two-dimensional maps can model nature more accurately than their lower dimensional counterparts it should be noted here that the H ́enon map has no natural importance. It was formulated by French mathematician and astrologist Michel Henon in 1976 in order to offer a simplified visualization of the Lorenz System.<br>
+                                Henon set the values of the parameters to A = 1.4 and B = 0.3 [39] for which the map displays chaotic properties. It has been determined that for other parameter values the map does not display such properties.[5, p. 147] The orbit of the map depends on the initial conditions as for some conditions the map explodes and the orbits tend to ∞[5]. However numerical analysis has shown that for all initial points, for which the map does not go to infinity, the obits converge to the same strange attractor. For example with the initial points (0, 0) and (1, 0) we will end up with the same strange attractor shown in the figure below:
+                                </p>
+                                <p>
+                                This derivation is all but rigorous and although the chaotic dynamic of the map has been rigorously proven[40] the actual existence of this strange attractor has never been actually proven.[41] In fact this could be a result of long, attracting cycles. This implies that our numerical analysis should not be considered definitive. The strangeness of this attractor lies in the fact that it is not a simple point or a cycle of points but a fractal-like structure, whose exact properties remain an open problem in mathematics.[30]
+                                </p>
+                                If we go back to the definition of a strange attractor we can see that the H ́enon map perfectly displays the property of local instability along with global stability. For distinct orbits (whose initial conditions converge) the first few hundred iterations vary vastly, but the overall image of the system is identical.<br>
+                                Shifting our focus from the strange attractor to the bifurcation properties of the map we can examine the H ́enon map with the already established theory in mind (from [5] and [41]) to get that first of all the fixed points are:<br>
+                                X +-= (-(1-B) +- sqrt((1-B)^2 +4A))/2A, and<br>
+                                Y +-= BX+- (33)<br>
+                                Using the formula in (5) we can determine that for A < 3/4(1 - B)^2 one of the two points is stable and the other is unstable, but when A > 3/4(1 - B)2 both the points are unstable. Similar to a one-dimensional map we once again have a bifurcation which leads to a two cycle, and we need to consider a fairly complicated formula to determine the new points. Namely:<br>
+                                ￼￼X = F[F(X,Y),G(X,Y)] <br>
+                                  Y = G[F (X, Y), G(X, Y)] (34) <br>
+                                We will not offer any further analytical examination of this map, but we will end this section with the obvious observation that if we set B = 0 in (11) we get the logistic map which through a change of variables can be transformed to the Verhulst map we have already examined.[5]
+                                </p>
+
+
+                                <h6>3.2.3 Gingerbreadman map</h6>
+                                <p>
+                                Finally we will examine the Gingerbreadman map, which is given by the equations:<br>
+                                xn+1 = 1 - yn + |xn| yn+1 = xn (35)<br>
+                                One can easily observe that the point (1,1) is a fixed point and it has been determined analytically that all points within the hexagonal region (0, 0), (1, 0), (2, 1), (1, 2), (0, 1), (2, 2) are periodic with period 6 [30]. This means that for these initial values the Gingerbreadman plot is a single (sta- ble) point and a hexagon with vertices within the aforementioned region, respectively.<br>
+                                As we move outside this region the behaviour of the map becomes chaotic.<br>
+                                By trying to find a qualitative relation between the initial condition and the orbits of the map we found that for initial values (-0.5, -0.5) a period 30 orbit between 5 separate hexagons arises, which one can visualize as the limbs and the head of the Gingerbread man. <br>
+                                As we approach these values from either side we can see that the spread of the points gravitates towards the attracting hexagons. However one more hexagon is visible - the body of the gingerbread man, or the centre hexagon.<br>
+                            </article>
+                </div>
+                <br>
+                <center>
+                    <h5><a href="../index.html">Go back</a></h5>
+                </center>
+            </section>
+    </body>
+</html>

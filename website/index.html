@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JMCrew</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:400,300,700'/>
+    <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+    <link rel='stylesheet' type='text/css' href="css/main.css"/>
+    
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="js/skrollr.min.js"></script>
+    <script src="js/main.js"></script>
+    
+</head>
+<body id="indexBody">
+    <div class="se-pre-con">
+        <i class="fa fa-spinner fa-spin" style="font-size:64px; color: black;"></i>
+    </div>
+
+        <!-- HEADER -->
+        <header>
+            <nav class="w3-sidenav w3-card-8" style="display:none;">
+                <div id="navClose" class="w3-closenav" onclick="w3_close()" style="text-align: right">
+                        <i class="fa fa-angle-double-right"></i>
+                </div>
+                    <div class="w3-accordion">
+                      <a class="w3-card-4 accordionHeader navOption" href="#">Home</a>
+                      <div id="homeAccordion" class="w3-accordion-content w3-show">
+                            <a class="w3-card-2 option-accordion-nav" id="conceptNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#concepts" 
+                                data-edge-strategy="reset">Concepts</a>
+                            <a class="w3-card-2 option-accordion-nav" id="teamNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#team" 
+                                data-edge-strategy="reset">Team</a>
+                            <a class="w3-card-2 option-accordion-nav" id="approachNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-end="@class:w3-card-2 active"
+                                data-anchor-target="#approach" 
+                                data-edge-strategy="reset">Approach</a>
+                    </div>
+                </div>
+                  <div class="w3-card-4 navOption" >
+                    <a id="navVerhulst" href="verhulst.html">Verhulst</a>
+                  </div>
+                  <div class="w3-card-4 navOption">
+                    <a id="navMandelbrot" href="mandelbrot.html">Mandelbrot</a>
+                  </div>
+                  <div class="w3-card-4 navOption">
+                    <a id="navExtension" href="extension.html">Extension</a>
+                  </div>
+            </nav>
+            <div id="menu" onclick="w3_open()" class="w3-opennav">
+                <i class="fa fa-bars"></i>
+            </div>
+        </header>
+
+        <!-- SLIDES -->
+        <main id="indexMain">
+            <!-- TITLE -->
+            <section id="indexTitle" class="slide-1">
+                    <div class="bcg">
+                        <div class="containerHeader">
+                            <div class="pageHeader" id="homeHeader">
+                                <h1>Chaos & Fractals</h1>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- CONCEPTS -->
+            <section id="concepts" class="slide-2">
+                    <div class="w3-card-2 slideHeader aside" id="conceptHeader">
+                     <h2>The Concepts</h2>
+                    </div>
+                        <div class="intro accelerated"
+                            data-bottom-top="opacity:0;" 
+                            data-center="opacity:1;"
+                            data--12p-top="opacity:0.4" id="sets">
+                                    <div class="container w3-card-8 aside" id="setsHeader">
+                                        <h3 >Sets</h3>
+                                    </div>
+                                    <article class="container aside">
+                                    <p>
+                                    Sets are the fundamental mathematical object. This means that the entirety of 
+                                    mathematics as we uderstand them can be built using the simple notion of sets. 
+                                    This is not to say that formal set theory is a simple area of study. In a very 
+                                    intuitive level, though we can simply regard sets as just collections of objects.
+                                    Even this definition of sets is strong enough to construct most of the mathematics
+                                    we take for granted.
+                                    </p>
+                                    </article>
+                                    <footer style="float:right; padding-right:2%"><a href="https://en.wikipedia.org/wiki/Set_theory" target="_blank">Learn more</a></footer>
+                        </div>
+                        <div class="intro accelerated" style="text-align: left;"
+                            data-bottom-top="opacity:0;" 
+                            data-center="opacity:1;"
+                            data--12p-top="opacity:0.4" id="maps">
+                                    <div class="container w3-card-8 aside" id="mapsHeader">
+                                        <h3>Maps</h3>
+                                    </div>
+                                    <article class="container aside">
+                                    <p>The concept of a map lies in the core of modern mathematics. The term map is synonymous to a function but the word map encapsulates the core idea of a function, that is that a given input is transformed, i.e. mapped, to a specific output.</p>
+                                    </article>
+                                    <footer style="float:right; padding-right:2%"><a href="https://en.wikipedia.org/wiki/Map_(mathematics)" target="_blank">Learn more</a></footer>
+                        </div>
+                        <div class="intro accelerated" style=""
+                            data-bottom-top="opacity:0;" 
+                            data-center="opacity:1;"
+                            data--12p-top="opacity:0.4" id="fractals">
+                                    <div class="container w3-card-8 aside" id="fractalsHeader">
+                                        <h3>Fractals</h3>
+                                    </div>
+                                    <article class="container aside">
+                                    <p>In mathematics, we describe fractals as those objects that display self-similar patterns. This doesn't require that the same structure remains unchanged at every scale but that alike structures appear. Some important examples are the Kock Snowflake, the Sierpinski carpet or the <a href="mandelbrot.html"><b>Mandelbrot Set</b></a>.</p>
+                                    </article>
+                                    <footer style="float:right; padding-right:2%"><a href="https://en.wikipedia.org/wiki/Fractal" target="_blank">Learn more</a></footer>
+                    </div>
+            </section>
+
+            <section id="buffer1" class="slide-2/3">
+                <div></div>
+            </section>
+
+            <!-- TEAM -->
+            <section id="team" class="slide-3">
+                <div class="w3-card-2 slideHeader accelerated" id="teamHeader">
+                    <h2>The Team</h2>
+                </div>
+                <div class="container" id="teamText">
+                    <div class="memberProfile aside accelerated" id="aris"
+                        data-bottom-top="-webkit-transform: translateX(125%);
+                                         -ms-transform: translateX(125%);
+                                         transform: translateX(125%);" 
+                        data-center="-webkit-transform: translateX(0);
+                                         -ms-transform: translateX(0);
+                                         transform: translateX(0);"
+                        onclick="window.location='team/aris.html'">
+                        <img src="images/arisProfile.png" class="memberProfilePicture w3-circle w3-card-2">
+                        <div class="memberProfileTextBox w3-card-4">
+                            <div class="memberProfileTextHeader">
+                                <h3>Aris</h3>
+                            </div>
+                            <div class="memberProfileText">
+                            	<ul>
+                            		<p><b>Description:</b> Brought up in the slums of Athens, he can be easily spotted because of his long hair and long beard. He's often seen with sunglasses indoors.</p>
+                            		<p><b>Last day quote:</b> "That rug really tied the room together."</p>
+                            	</ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memberProfile aside accelerated right" id="nickolay"
+                        data-bottom="-webkit-transform: translateX(-125%);
+                                         -ms-transform: translateX(-125%);
+                                         transform:     translateX(-125%);" 
+                        data-center="-webkit-transform: translateX(-7%);
+                                         -ms-transform: translateX(-7%);
+                                         transform: translateX(-7%);"
+                        onclick="window.location='team/nickolay.html'">
+                        <img src="images/nickProfile.png" class="memberProfilePicture w3-circle w3-card-2">
+                        <div class="memberProfileTextBox w3-card-4">
+                            <div class="memberProfileTextHeader">
+                                <h3>Nickolay</h3>
+                            </div>
+                            <div class="memberProfileText" style="text-align: left;">
+                            	<ul>
+                            		<p><b>Description:</b> He came straight from Siberia so he thinks that London's weather is flip-flop weather. </li>
+                            		<p><b>Last day quote:</b> "Lads, how do I get matches on Tinder?"</li>
+                            	</ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memberProfile aside accelerated" id="rafa"
+                        data-bottom-top="-webkit-transform: translateX(125%);
+                                         -ms-transform:     translateX(125%);
+                                         transform:         translateX(125%);" 
+                        data-center="-webkit-transform: translateX(0);
+                                         -ms-transform: translateX(0);
+                                         transform: translateX(0);"
+                        onclick="window.location='team/rafa.html'">
+                        <img src="images/rafaProfile.png" class="memberProfilePicture w3-circle w3-card-2">
+                        <div class="memberProfileTextBox w3-card-4">
+                            <div class="memberProfileTextHeader">
+                                <h3>Rafael</h3>
+                            </div>
+                            <div class="memberProfileText">
+                            	<ul>
+                            		<p><b>Description:</b> Currently going through a identity crisis, he says he's Brazilian and also half Spanish but he went to a French school in the United States. </li>
+                            		<p><b>Last day quote:</b> "Robbie you're making me <i>very</i> angry!"</li>
+                            	</ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memberProfile aside accelerated right" id="ramon"
+                        data-bottom-top="-webkit-transform: translateX(-125%);
+                                         -ms-transform: translateX(-125%);
+                                         transform: translateX(-125%);" 
+                        data-center="-webkit-transform: translateX(-7%);
+                                         -ms-transform: translateX(-7%);
+                                         transform: translateX(-7%);"
+                        onclick="window.location='team/ramon.html'">
+                        <img src="images/ramonProfile.png" class="memberProfilePicture w3-circle w3-card-2">
+                        <div class="memberProfileTextBox w3-card-4">
+                            <div class="memberProfileTextHeader">
+                                <h3>Ramon</h3>
+                            </div>
+                            <div class="memberProfileText" style="text-align: left;">
+                            	<ul>
+                            		<p><b>Description:</b> Always claiming to be taller than he actually is, this short Spanish guy splits his time between Metric and Ethos' swimming pool.</li>
+                            		<p><b>Last day quote:</b> "Damn it Aris, what is this 'first book' you keep referencing?"</li>
+                            	</ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memberProfile aside accelerated" id="robbie"
+                        data-bottom-top="-webkit-transform: translateX(125%);
+                                         -ms-transform: translateX(125%);
+                                         transform: translateX(125%);" 
+                        data-center="-webkit-transform: translateX(0);
+                                         -ms-transform: translateX(0);
+                                         transform: translateX(0);" 
+                        onclick="window.location='team/robert.html'">
+                        <img src="images/robbieProfile.png" class="memberProfilePicture w3-circle w3-card-2">
+                        <div class="memberProfileTextBox w3-card-4">
+                            <div class="memberProfileTextHeader">
+                                <h3>Robert</h3>
+                            </div>
+                            <div class="memberProfileText">
+                                <ul>
+                            		<p><b>Description:</b> Definitely the best French Hornist in the team, he cannot go to the toilet without his MacBook. </li>
+                            		<p><b>Last day quote:</b> When asked for a quote he replied: "Can I say something about JavaScript being s**t?"</li>
+                            	</ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- APPROACH -->
+            <section id="approach" class="slide-4">
+                <div class="w3-card-2 slideHeader aside" id="approachHeader">
+                    <h2>Our Approach</h2>
+                </div>
+                <div class="container" id="approachText">
+                    <div class="w3-card-8 diagram w3-center" id="approachComputational">
+                        <div class="diagramHeader" id="approachComputationalHeader">
+                            <h3>Computational<br>Exploration</h3>
+                        </div>
+                        <br>
+                        <div class="diagramIcon" id="approachComputationalIcon">
+                            <i class="fa fa-code" style=""></i>
+                        </div>
+                        <br>
+                        <div class="diagramText" id="approachComputationalText">
+                            <p>Qualitative research underpins the success of many discoveries.
+                               In fact, some solutions cannot be attained analytically at all,
+                               giving rise to the use of numerical methods.</p>
+                        </div>
+                    </div>
+                    <div class="w3-card-8 diagram w3-center" id="approachMathematical">
+                        <div class="diagramHeader" id="approachMathematicalHeader">
+                            <h3>Analytical<br>Exploration</h3>
+                        </div>
+                        <br>
+                        <div class="diagramIcon" id="approachMathematicalIcon">
+                            <span>f(x)</span>
+                        </div>
+                        <br>
+                        <div class="diagramText" id="approachMathematicalText">
+                            <p>Proof and rigorous analysis form the foundation of modern Mathematics.
+                               It forms the backbone of the tried and tested combination of derived 
+                               results and supporting qualitative data.</p>
+                        </div>
+                    </div>
+                    <div class="w3-card-8 diagram w3-center" id="approachExtension">
+                        <div class="diagramHeader" id="approachExtensionHeader">
+                            <h3>Mathematical<br>Extension</h3>
+                        </div>
+                        <br>
+                        <div class="diagramIcon" id="approachExtensionIcon">
+                            <i class="fa fa-binoculars"></i>
+                        </div>
+                        <br>
+                        <div class="diagramText" id="approachExtensionText">
+                            <p>Ultimately curiosity is what drives us to extend the horizon of our knowledge.
+                               Research off of the beaten path is the most rewarding and exciting and can
+                               pave the way for future explorers.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <h5><a href="final.pdf">See PDF version</a></h5>
+            </footer>
+        </main>
+
+</body>
+</html>

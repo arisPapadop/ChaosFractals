@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="IE=9"> 
+        <title>Mandelbrot - JMCrew</title>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        
+        <!-- CSS -->
+        <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300italic,300,400italic,400,700'/>
+        <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel='stylesheet' type='text/css' href="css/main.css"/>
+        
+        <!-- JavaScript -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                TeX: { equationNumbers: { autoNumber: "AMS" } },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+                }
+            });
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript" src="js/mandelbrot.js"></script>
+        <script src="js/main.js"></script>
+        
+    </head>
+    <body id="mandelbrotBody">
+        <div class="se-pre-con">
+            <i class="fa fa-spinner fa-spin" style="font-size:64px; color: black;"></i>
+        </div>
+
+            <!-- HEADER -->
+            <header>
+                <nav class="w3-sidenav w3-card-8" style="display:none;">
+                    <div id="navClose" style="text-align: right">
+                        <i class="fa fa-angle-double-right w3-closenav" onclick="w3_close()" ></i>
+                    </div>
+                        
+                      <div class="w3-card-4 navOption">
+                        <a id="navMandelbrot" href="index.html">Home</a>
+                      </div>
+
+                      <div class="w3-card-4 navOption" >
+                        <a id="navVerhulst" href="verhulst.html">Verhulst</a>
+                      </div>
+                      <div class="w3-card-4 accordionHeader navOption">
+                        <a href="#slide-5">Mandelbrot</a>
+                      </div>
+                       <div class="w3-accordion">
+                          
+                          <div id="verhulstAccordion" class="w3-accordion-content w3-show">
+                            <a class="w3-card-2 option-accordion-nav" id="infoNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#intro" 
+                                data-edge-strategy="reset">Introduction</a>
+                            <a class="w3-card-2 option-accordion-nav" id="mandelbrotSetNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#mandelbrotSet" 
+                                data-edge-strategy="reset">Mandelbrot</a>
+                            </div>
+                        </div>
+                      <div class="w3-card-4 navOption">
+                        <a id="navExtension" href="extension.html">Extension</a>
+                      </div>
+                </nav>
+
+                
+
+                <div id="menu" onclick="w3_open()" class="w3-opennav">
+                    <i class="fa fa-bars"
+                        data-top="color: #f2f1ef;" 
+                        data-top-bottom="color: #2e3842;"
+                        data-anchor-target="#mandelbrotTitle"></i>
+                </div>
+            </header>
+
+            <!-- SLIDES -->
+            <main id="verhulstMain" class="articleMain">            
+                <section class="slide-5 articleTitle" id="mandelbrotTitle">
+                   <div class="containerHeader">
+                        <div class="pageHeader" id="mandelbrotHeader" style="display: none">
+                            <h1>The Mandelbrot Set</h1>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide-6 w3-card-8 articleText" id="mandelbrotArticle">
+                            <div id="intro" class="chapter">
+                                <h3>Introduction</h3>
+                                <p>
+                                    The interest in fractal geometry initially arose from the observation of self-similar patterns in nature. One of the first mathematicians who referenced the idea of self-similarity was Leibniz in the 17<sup>th</sup> century. However, the concept of fractals as we understand them now was not developed until  two centuries later. We could highlight for instance the work of Georg Cantor on the Cantor set or the contributions of Helge von Koch, who geometrically exemplified the phenomenon with the so called Koch snowflake. The field of fractal geometry kept evolving, with more abstract approaches such as extending the idea to multiple dimensions.<sup>[<a href="#mandelbrotReference1">1</a>]</sup>
+                                </p>
+                                <p>
+                                    These advances eventually led us to the mathematical object at issue: <b>The Mandelbrot Set</b>, discovered in 1979 by the mathematician Benoit Mandelbrot. Author of the famous paper <i>How Long Is the Coast of Britain? Statistical Self-Similarity and Fractional Dimension</i><sup>[<a href="#mandelbrotReference2">2</a>]</sup>, he worked as a researcher at IBM and it was thanks to the powerful computers he had at his disposition that he could plot this emblem of mathematics.<sup>[<a href="#mandelbrotReference3">3</a>]</sup><sup>[<a href="#mandelbrotReference4">4</a>]</sup>
+                                </p>
+                            </div>
+                            <div id="mandelbrotSet" class="chapter">
+                                <h3>The Mandelbrot Set</h3>
+                                <p>
+                                    The Mandelbrot set<sup>[<a href="#mandelbrotReference5">5</a>]</sup> is related to the behaviour of following complex one dimensional map over infinite iterations:
+                                    \begin{equation}
+                                        z_{k+1} = z_{k}^2 + c
+                                    \end{equation}
+                                    Where $z, c \in \mathbb{C}$ and $z_{0} = 0$. We say that the Mandelbrot Set is the set of points $c \in \mathbb{C}$ that when plugged in Eq. (1), converge as $k \rightarrow \infty$.
+                                </p>
+                                    <div class="figure">
+                                        <div class="subfigure">
+                                            <canvas id="MandelbrotCanvas" width="900" height="600" style="display: block;" class="w3-card-8"></canvas>
+                                            <button style="position: absolute; left: 0px; top: 0px; " class="w3-btn" onClick="ResetMandelbrot()"><i class="fa fa-refresh" style="color: white;"></i></button>
+                                            </div>
+                                        <span class="caption">
+                                            <span class="w3-tooltip"><i class="footnote">Figure 1</i>. The Mandelbrot set.
+                                            <span class="w3-text">
+                                            You can select any area of the set and zoom in into that area to observe the self-similarity. Once you have zoomed in you can use the left and right arrow keys to shift between consequtive zooms. The button at the top left resets the map.
+                                            </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                <p style="text-align: left">
+                                    Figure 1 represents these $c$-values plotted in a complex plane bounded within $-1.2 \leq Im(c) \leq 1.2$ and $-2.1 \leq Re(c) \leq 0.7$. It is also important to remark what colours mean in this representation. The main light blue area represents the actual points that belong to the set, whereas the gradient of colours from blue to black is given by the number of iterations necessary to reach the escape condition.<sup>[<a href="#mandelbrotReference6">6</a>]</sup> 
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Lemma:</span> The escape condition in the Mandelbrot Set is reached when at some point in the iterations the value of $|z_{k}| > 2$ for some $k$.</p>
+                                    </div>
+                                <p>
+                                    <i>Proof.</i> We intend to prove that $|z| > 2 \implies |z^2 + c| > |z|$ (i.e. diverges). First suppose that $|z| > 2$ which, invoking the function definition can be rewritten as $|z^2 + c| > 2$. From the triangle inequality<sup>[<a href="#mandelbrotReference7">7</a>]</sup> we also know that $|z^2 + c| + |c| \geq |z^2|$. Therefore:
+                                    \begin{align*}
+                                        |z^2 + c| &\geq |z^2| - |c| && \text{By the triangle inequality.}\\
+                                        |z^2 + c| &> 2|z| - |c| && \text{By the assumption that $|z| > 2$.} \tag{*}\\
+                                    \end{align*}
+                                    Now we need to show that $|z| \geq |c|$ which can be obtained by considering the first iterations:
+                                    \begin{align*}
+                                        |z_{1}| &= |c|\\
+                                        |z_{2}| &= |c^2 + c| = |c||c + 1| > |c|\\
+                                        &\vdots \\
+                                        |z_{n}| &> |c|\\
+                                    \end{align*}
+                                    At this point it can easily be deduced that $2|z| - |c| \geq |c|$ from the last result because $|z| \geq |c| \implies |z| - |c| \geq 0 \implies 2|z| - |c| \geq |z| \geq |c|$. This statement combined with (*) leads us to $|z^2 + c| > |z|$ q.e.d.<sup>[<a href="#mandelbrotReference8">8</a>]</sup><sup>[<a href="#mandelbrotReference9">9</a>]</sup>
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Compact set:</span> A set is compact if it's both bounded and closed.<sup>[<a href="#mandelbrotReference10">10</a>]</sup><sup>[<a href="#mandelbrotReference11">11</a>]</sup></p>
+                                    </div>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Bounded set:</span> A set is bounded if all the points in the set lie within some fixed distance from one another.<sup>[<a href="#mandelbrotReference12">12</a>]</sup></p>
+                                    </div>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Closed set:</span> A set is closed if it is closed under the limit operation.<sup>[<a href="#mandelbrotReference13">13</a>]</sup><sup>[<a href="#mandelbrotReference14">14</a>]</sup></p>
+                                    </div>
+                                <p>
+                                    Saying that the Mandelbrot set is restricted to $|z_{k}| \leq 2$ is equivalent to saying that all the elements are contained in the disk of radius 2 around the origin, which implies it's bounded. Furthermore, from the lemma just proven, it is obvious that all the limit points<sup>[<a href="#mandelbrotReference15">15</a>]</sup><sup>[<a href="#mandelbrotReference16">16</a>]</sup> lie in the set. So we can conclude that the Mandelbrot set is a compact set.
+                                </p>
+                                <p>
+                                    Finally, we'll demonstrate the relationship between the sequence of real points $c_{k} = a_{k} + 0i$ in the Mandelbrot set and the period-doubling cascade $a_{k}$ of the logistic map.
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Logistic map:</span> Recurrence relation of degree 2 of the form $x_{n+1} = rx_{n}(1 - x_{n})$.<sup>[<a href="#mandelbrotReference17">17</a>]</sup></p>
+                                    </div>
+                                <p style="text-indent: 0;">
+                                    The relationship between logistic maps and the Mandelbrot set follows from a redefinition of the variables. We need to allow $x,r \in \mathbb{C}$ and perform the following variable changes:
+                                    \begin{align*}
+                                    z_{n} &= r(x_{n} - \frac{1}{2})\\
+                                        c &= \frac{1-(r-1)^2}{4}
+                                    \end{align*}
+                                    Now, using simple arithmetic we can rewrite the equation:
+                                    \begin{align*}
+                                        x_{n+1} &= rx_{n}(1 - x_{n})\\
+                                        x_{n+1} &= r(\frac{1}{4} - (x_{n} - \frac{1}{2})^2)\\
+                                        &\vdots \\
+                                        z_{n+1} &= z_{n}^2 + c
+                                    \end{align*}
+                                    At this point, we can intuitively deduce that both are representations of the same phenomenon. Let's consider the following graph, which we'll use to deepen our understanding about this relationship.
+                                </p>
+                                    <div class="figure">
+                                        <div>
+                                            <img src="images/mandelbrotlogsticlink.png" class="w3-card-8">
+                                        </div>
+                                        <span class="caption"><i>Figure 2.</i> Link between the Mandelbrot set and the bifurcations of the Logistic map.</span>
+                                    </div>
+                                <p style="padding-bottom: 0;">
+                                    It is important to mention that each graph represents in Figure 1 a different face of the quadratic map. While the Mandelbrot set represents all the points that converge, the logistic bifurcation map gives the actual values of the period-doubling points for every given r. Even though this information is not directly provided by the Mandelbrot set, each cardioid is actually associated to a certain periodicity (as we can see in Figure 3). This fact together with the previous connection found between $r$ and $c$ clarify why every new cardioid found moving along the real axis in the Mandelbrot set represents a period-doubling point.<sup>[<a href="#mandelbrotReference18">18</a>]</sup><sup>[<a href="#mandelbrotReference19">19</a>]</sup><sup>[<a href="#mandelbrotReference20">20</a>]</sup>
+                                </p>
+                                <br>
+                                <div class="figure">
+                                        <div>
+                                            <img src="images/cardioids.png" class="w3-card-8">
+                                        </div>
+                                        <span class="caption"><i>Figure 3.</i> Periodicity associated with every cardioid.<sup>[<a href="#mandelbrotReference20">20</a>]</sup></span>
+                                </div>
+                            </div>
+                        <hr style="border-color:#2e3842">
+                        <div id="mandelbrotReferences" class="references">
+                            <h4>References</h4>
+                            <ol type="1">
+                                <li id="mandelbrotReference1">Wikipedia. Fractal - Wikipedia, The Free Encyclopedia; 2016. [Online; accessed 13-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Fractal&oldid=708994405" target="_blank">https://en.wikipedia.org/w/index.php?title=Fractal&oldid=708994405</a>.</a></li>
+                                <li id="mandelbrotReference2"> Mandelbrot B. How Long Is the Coast of Britain? Statistical Self- Similarity and Fractional Dimension. Science, New Series. May 5, 1967;156(3775):636-638.</li>
+                                <li id="mandelbrotReference3"> YouTube. The Mandelbrot Set! The only video you need to see!; 2013. [Online; accessed 13-March-2016]. Available from: <a href="https://www.youtube.com/watch?v=3yE4d7O17wE" target="_blank">https://www.youtube.com/watch?v=3yE4d7O17wE</a>.</li>
+                                <li id="mandelbrotReference4"> Wikipedia. Benoit Mandelbrot - Wikipedia, The Free Ency- clopedia; 2016. [Online; accessed 13-March-2016]. Avail- able from: <a href="https://en.wikipedia.org/w/index.php?title=Benoit_ Mandelbrot&oldid=708173907" target="_blank">https://en.wikipedia.org/w/index.php?title=Benoit_ Mandelbrot&oldid=708173907</a>.</li>
+                                <li id="mandelbrotReference5"> Wikipedia. Mandelbrot set - Wikipedia, The Free Encyclo- pedia; 2016. [Online; accessed 13-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Mandelbrot_ set&oldid=705981104" target="_blank">https://en.wikipedia.org/w/index.php?title=Mandelbrot_ set&oldid=705981104</a>.</li>
+                                <li id="mandelbrotReference6"> Peter Alfeld UoU Department of Mathematics. The Mandelbrot Set.; 1998. [Online; accessed 13-March-2016]. Available from: <a href="http://www. math.utah.edu/~pa/math/mandelbrot/mandelbrot.html" target="_blank">http://www. math.utah.edu/~pa/math/mandelbrot/mandelbrot.html</a>.</li>
+                                <li id="mandelbrotReference7"> Weisstein E. Triangle inequality.;. [Online; accessed 13-March-2016]. From MathWorld–A Wolfram Web Resource. Available from: <a href="http://mathworld.wolfram.com/TriangleInequality.html" target="_blank">http://mathworld.wolfram.com/TriangleInequality.html</a>.</li>
+                                <li id="mandelbrotReference8"> The Math Forum @ Drexel. Complex Numbers and the Mandelbrot Set; 1996. [Online; accessed 13-March-2016]. Available from: <a href="http://mathforum.org/library/drmath/view/53807.html" target="_blank">http://mathforum.org/library/drmath/view/53807.html</a>.</li>
+                                <li id="mandelbrotReference9"> The Math Forum @ Drexel. Z Values in the Mandelbrot Set; 2006. [Online; accessed 13-March-2016]. Available from: <a href="http://mathforum.org/library/drmath/view/68518.html" target="_blank">http://mathforum.org/library/drmath/view/68518.html</a>.</li>
+                                <li id="mandelbrotReference10"> Wikipedia. Compact space - Wikipedia, The Free Encyclope- dia; 2016. [Online; accessed 13-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Compact_space&oldid=700156441" target="_blank">https://en.wikipedia.org/w/index.php?title=Compact_space&oldid=700156441</a>.</li>
+                                <li id="mandelbrotReference11"> Kubota KK. Lecture 2: Compact Sets and Continuous Functions; 1999. [Online; accessed 13-March-2016]. Available from: <a href="http://www.msc.uky.edu/ken/ma570/lectures/lecture2/html/compact.htm" target="_blank">http://www.msc.uky.edu/ken/ma570/lectures/lecture2/html/compact.htm</a>.</li>
+                                <li id="mandelbrotReference12"> Wikipedia. Bounded set - Wikipedia, The Free Encyclope- dia; 2015. [Online; accessed 13-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Bounded_set&oldid=682159057" target="_blank">https://en.wikipedia.org/w/index.php?title=Bounded_set&oldid=682159057</a>.</li>
+                                <li id="mandelbrotReference13"> Wikipedia. Closed set - Wikipedia, The Free Encyclopedia; 2015. [Online; accessed 13-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Closed_set&oldid=681209723" target="_blank">https://en.wikipedia.org/w/index.php?title=Closed_set&oldid=681209723</a>.</li>
+                                <li id="mandelbrotReference14"> Weisstein E. Closed Set.;. [Online; accessed 13-March-2016]. From MathWorld - A Wolfram Web Resource. Available from: <a href="http://mathworld.wolfram.com/ClosedSet.html" target="_blank">http://mathworld.wolfram.com/ClosedSet.html</a>.</li>
+                                <li id="mandelbrotReference15"> Wikipedia. Limit point - Wikipedia, The Free Encyclope- dia; 2016. [Online; accessed 13-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Limit_point&oldid=709120869" target="_blank">https://en.wikipedia.org/w/index.php?title=Limit_point&oldid=709120869</a>.</li>
+                                <li id="mandelbrotReference16"> O'Connor J. Limit points and closed sets in metric spaces; 2004. [Online; accessed 13-March-2016]. Available from: <a href="http://www-history.mcs.st-and.ac.uk/~john/MT4522/Lectures/L9.html" target="_blank">http://www-history.mcs.st-and.ac.uk/~john/MT4522/Lectures/L9.html</a>.</li>
+                                <li id="mandelbrotReference17"> Wikipedia. Talk:Logistic map - Wikipedia, The Free Encyclopedia; 2009. [Online; accessed 13-March-2016]. Available from: <a href="https://en.wikipedia.org/wiki/Talk%3ALogistic_map" target="_blank">https://en.wikipedia.org/wiki/Talk%3ALogistic_map</a>.</li>
+                                <li id="mandelbrotReference18"> Murray R. Studying the Logistic Map and the Mandelbrot Set us- ing SOS Methods; 2006. [Online; accessed 13-March-2016]. Avail- able from: <a href="https://www.cds.caltech.edu/~murray/wiki/images/9/95/Gayme_mandelbrot-15aug06.pdf" target="_blank">https://www.cds.caltech.edu/~murray/wiki/images/9/95/Gayme_mandelbrot-15aug06.pdf</a>.</li>
+                                <li id="mandelbrotReference19"> Lipa C. Chaos and Fractals;. [Online; accessed 13-March- 2016]. Available from: <a href="http://www.math.cornell.edu/~lipa/mec/lesson5.html" target="_blank">http://www.math.cornell.edu/~lipa/mec/lesson5.html</a>.</li>
+                                <li id="mandelbrotReference20"> Walton C. Fractals: What is the relationship between the Mandelbrot
+                                set and applications of the logistic map?; 2013. [Online; accessed
+                                13-March-2016]. Available from: <a href="http://bit.ly/1nHyrLj" target="_blank">http://bit.ly/1nHyrLj</a></li>
+                                <li id="mandelbrotReference21"> Wikipedia. File:Mandelbrot Set Periodicities coloured.png; 2005. [Online; accessed 13-March-2016]. Available from: <a href="http://bit.ly/1QPQ99Z" target="_blank">http://bit.ly/1QPQ99Z</a>.</li>
+                        
+                        </ol>
+                        </div>
+                </section>
+            </main>
+            
+    </body>
+</html>

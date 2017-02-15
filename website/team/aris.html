@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="IE=9"> 
+        <title>JMCrew</title>
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+
+        <!-- CSS -->
+        <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300italic,300,400italic,700'/>
+        <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel='stylesheet' type='text/css' href="../css/main.css"/>
+        
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="../js/skrollr.min.js"></script>
+        <script src="../js/config.js"></script>
+        
+    </head>
+    <body>       
+        <section id="concepts" class="slide-2">
+            <div class="w3-card-2 w3-padding-8 aside" id="profileHeader" style="text-align: center;">
+                <img src="../images/arisProfile.png" width="250px" height="250px" class="memberProfilePicture w3-circle w3-card-2">
+                <h4>Aris Papadopoulos</h4>
+            </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="maincontributions">
+                                <h3>Main contributions</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <ul style="padding-top: 2%;">
+                                <li>"The Verhulst process" page</li>
+                                <li>Research on the Henon map</li>
+                            </ul>
+                            </article>
+                            <br>
+                </div>
+                <div class="w3-card-12 intro accelerated"
+                    data-bottom-top="opacity:0;" 
+                    data-center="opacity:1;"
+                    data--12p-top="opacity:0.4">
+                            <div class="w3-container w3-card-8 aside" id="textcontributed">
+                                <h3>Text</h3>
+                            </div>
+                            <article class="w3-container aside">
+                            <p>
+                                <h6> 1.3 Road to Chaos</h6>
+                                <p>This process of recurring period-doubling is also known as bifurcation and continues in a similar manner until r reaches the value 2.57, after which the map displays chaotic behaviour. This means that the period-doubling after this point occurs in such a way that the system is able to end up in any value. This can be seen in the second graph, where if we set r to be greater than 2.57 we see that the system, which follows the very simple rule of equation (2) appears to have a random behaviour. This behaviour is all but random, though; it is chaotic.</p>
+                                <p><b>Definition 1.3.1. Chaos:</b> Aperiodic, time-asymptotic behaviour in a deter- ministic system which exhibits sensitive dependencies on initial conditions[7]</p>
+                                <p>As we can see one of the main properties of chaotic behaviour, and one which we have not examined so far is the initial value sensitivity. Up to now we have kept the initial value of the process fixed to x0 = 0.1 but we can easily see for r > 2.57; the long term oscillations of the fixed points change drastically with insignificant changes to the initial condition.</p>
+                                <p>As Edward Norton Lorenz, the American mathematician who discovered deterministic chaos, said: The present determines the future, but the ap- proximate present does not approximately determine the future[8]</p>
+                                <p>One final thing that can be observed about the map is that it displays a property called self-similarity.</p>
+                                <p><b>Definition 1.3.2. Self-similarity:</b> The property that a geometrical figure has when each portion of the image can be considered a reduced-scale image of the entire figure[9]</p>
+                                <p>Self-similarity is at the core of the definition of a fractal, in the form of scale invariance. This can be seen in the graph by zooming in at points of the map after the parameter r has caused the behaviour to become chaotic we can see that the graph appears to be the same as the larger scale of itself.</p>
+
+                                <h4>3 Extension: 3.1 Chaos theory and 2D maps</h4>
+                                <h6>3.1.1 Chaos</h6>
+
+                                <p>
+                                    We have already defined Chaos in the Verhulst section of this paper, but without focusing explicitly on the chaotic properties of the map. In this section we will examine two-dimensional maps and their chaotic properties. In order to examine chaotic properties more efficiently we will need to define some new terms that will allow more for rigour in our text.
+                                </p>
+                                <p><b>Definition 3.1.1.1. Orbit:</b> The set of all successive iterations of an initial value.[30, p.143]</p>
+
+                                <p>
+                                    We have referred to orbits implicitly in previous sections as the iterations of an initial value, but no definition was required since, previously, we exam- ined the properties of the maps for a fixed initial value. Now that we know the concept of an orbit we can define a stable fixed point, also defined as an attractor.
+                                </p>
+
+                                <p><b>Definition 3.1.1.2. Attractor:</b> A set of values towards which the orbits of a system tend to as the number of iterations increases, for a variety of initial values.[30, p.148]</p>
+
+                                <p>
+                                    This definition will be useful in the discussion concerning strange attractors.
+                                </p>
+
+                                <p><b>Definition 3.1.1.3. Chaotic set:</b> All initial values of a discrete dynamical system which produce unstable orbits. An orbit is called unstable when for arbitrary close initial values the successive iterations can differ vastly.[30, p.146]</p>
+
+                                <p>
+                                    The chaotic set of a given map is a way of quantifying the chaotic prop- erties of a map, as it describes the set of initial values close to which the function is very sensitive to changes. The final, and most interesting, defi- nition, before moving on to a more concrete examination of specific maps is that of a strange attractor.
+                                </p>
+
+                                <p><b>Definition 3.1.1.4. (Chaotic)</b> An attractor which displays fractal proper- ties. They describe systems which are locally unstable but globally stable. We can also define this as an aperiodic recurrent attractor[31] , which in essence means that even though the points do not display any periodicity the overall set displays fractal properties.[5][32]</p>
+                                A few points regarding this definition are worth mentioning:
+                                <ul>
+                                <li>The term strange, coined by mathematicians David Ruelle and Floris Takens, is used to emphasize the fact that a solid mathematical expla- nation for these attractors does not exist.</li>
+                                <li>The antithetical states of local and global simply means that arbitrarily close initial values end up arbitrarily close together in the attractor, but before that they can end up being arbitrarily far apart.</li>
+                                </ul>
+                                
+                                <h6>3.1.2 Two Dimensional Maps</h6>
+                                <p>
+                                    The general formula[5] for a two-dimensional map is: 
+                                    xn+1 =F(xn,yn),<br>
+                                    yn+1 = G(xn, yn). (22)<br>
+                                    
+                                    Here the xn and yn are independent variables and F ,G are known continuous functions. It should be quite clear that maps of two (or more) dimensions are more useful in representing natural phenomena than one-dimensional maps, since in nature multiple quantities vary over time. We will examine two such maps, the Henon map and the Gingerbreadman map. Before moving on, the reader should keep in mind that universal behaviours of such maps are very difficult to find and even more difficult to prove.
+                                </p>
+                                <p>
+                                    The general theory[5] of detecting the fixed orbits in a two-dimensional system is in general an extension of the theory for one-dimensional systems. In a two-dimensional system we need both the X and the Y to remain the same for all subsequent iterations so:<br>
+                                    X = f(X) (23)<br>
+                                    becomes:<br>
+                                    X = F(X,Y)<br>
+                                    Y = G(X,Y) (24)<br>
+                                    Determining the stability of a point now becomes more complicated, as we need to examine the partial derivatives of each function with respect to each variable:<br>
+                                    M = ((dF/dx dF/dy) (dG/dx dG/dy))|(X,Y) (25)<br>
+                                    ￼￼
+                                    and similarly to what we saw before, with the modulus of the derivative having to be less than 1, we would need that the absolute value of the eigenvalues of this matrix are less 1. It is easy to understand why this condition needs to hold by writing down the Taylor expansion of each of the two functions near X and Y and expressing the two in matrix form. As before we will only examine first order convergence, i.e. we will only keep the first firs order terms of the Taylor expansion.<br>
+                                    ((xn+1 - X) (yn+1 -Y)) &asymp; M * ((xn - X) (yn -Y)) (26)<br>
+                                     
+                                    If we have that the eigenvalues of the matrix of derivatives are less than 1 then the matrix of equation (5) goes to the zero matrix as the number of iteration increases and thus we get that:<br>
+                                    ((xn+1 - X) (yn+1 - Y)) -> ((0) (0)) (27)<br>
+                                    i.e. that xn+1 →X and yn+1 to Y.
+                                </p>
+                                
+                                <h5>4.2 cPRNG using the Tinkerbell Map</h5>
+
+                                <p>Regarding the real-word applications of dynamical systems, it is remarkable how we can take advantage of their chaotic behaviour in the process of gen- erating random numbers. Following with the focus in two-dimensional maps in this section, we'll go through a chaotic pseudo-random number generator (cPRNG) based on the Tinkerbell map which will serve as an example.<br>
+                                The Tinkerbell map[42] is defined as follows:<br>
+                                xn+1 =x2n -yn2 +axn +byn<br>
+                                yn+1 = 2xnyn + cxn + dyn,<br>
+                                where a = 0.9, b = -0.6013, c = 2.0 and d = 0.5 are commonly used values and will be the values considered in the development and testing of the algorithm.</p>
+                            </p>
+                            </article>
+                </div>
+                <br>
+                <center>
+                    <h5><a href="../index.html">Go back</a></h5>
+                </center>
+            </section>
+    </body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="IE=9"> 
+        <title>Extension - JMCrew</title>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+        <!-- CSS -->
+        <link rel='stylesheet' type='text/css' href="http://www.w3schools.com/lib/w3.css"/>
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300italic,300,400,400italic,700'/>
+        <link rel='stylesheet' type='text/css' href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel='stylesheet' type='text/css' href="css/main.css"/>
+        
+        <!-- JavaScript -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                TeX: { equationNumbers: { autoNumber: "AMS" } },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+                }
+            });
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="js/lorenzsimulation.js"></script>
+        <script src="js/main.js"></script>
+        
+    </head>
+    <body id="extensionBody">
+        <div class="se-pre-con">
+            <i class="fa fa-spinner fa-spin" style="font-size:64px; color: black;"></i>
+        </div>
+
+            <!-- HEADER -->
+            <header>
+                <nav class="w3-sidenav w3-card-8" style="display:none;">
+                    <div id="navClose" class="w3-closenav" onclick="w3_close()" style="text-align: right">
+                        <i class="fa fa-angle-double-right"></i>
+                    </div>
+                        
+                      <div class="w3-card-4 navOption">
+                        <a id="navMandelbrot" href="index.html">Home</a>
+                      </div>
+                      
+                        <div class="w3-card-4 navOption">
+                        <a id="navVerhulst" href="verhulst.html">Verhulst</a>
+                      </div>
+                      <div class="w3-card-4 navOption">
+                        <a id="navExtension" href="mandelbrot.html">Mandelbrot</a>
+                      </div>
+                      <div class="w3-card-4 accordionHeader navOption">
+                        <a href="#">Extension</a>
+                      </div>
+                      <div class="w3-accordion">
+                          <div id="verhulstAccordion" class="w3-accordion-content w3-show">
+                            <a class="w3-card-2 option-accordion-nav" id="infoNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#chaos" 
+                                data-edge-strategy="reset">Chaos theory and 2D maps</a>
+                            <a class="w3-card-2 option-accordion-nav" id="mandelbrotSetNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#examples" 
+                                data-edge-strategy="reset">Examples</a>
+                            <a class="w3-card-2 option-accordion-nav" id="mandelbrotSetNav"
+                                data-6p-top="@class:w3-card-2 active" 
+                                data-top-bottom="@class:w3-card-2 active" 
+                                data-anchor-target="#applications" 
+                                data-edge-strategy="reset">Applications</a>
+                    </div>
+                </nav>
+
+                <div id="menu" onclick="w3_open()" class="w3-opennav">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </header>
+
+            <!-- SLIDES -->
+            <main id="extensionMain" class="articleMain">            
+                <section class="slide-5 articleTitle" id="extensionTitle">
+                    <div class="containerHeader">
+                        <div class="pageHeader" id="extensionHeader" style="display: none">
+                            <h1>Extension</h1>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide-6 w3-card-8 articleText" id="extensionArticle">
+                            <div id="chaos" class="chapter">
+                                <h3>Chaos theory and 2D maps</h3><br>
+                                <h6>1. Chaos theory </h6>
+                                <p>
+                                    We have already defined <b>Chaos</b> in the Verhulst section of this paper, but without focusing explicitly on the chaotic properties of the map. In this section we will examine two-dimensional maps and their chaotic properties. In order to examine chaotic properties more efficiently we will need to define some new terms that will allow more for rigour in our text.
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Orbit:</span> The set of all successive iterations of an initial value.<sup>[<a href="#extensionReference1">1</a>, p.143]</sup></p>
+                                    </div>
+                                <p>
+                                    We have referred to orbits implicitly in previous sections as the iterations of an initial value, but no definition was required since, previously, we examined the properties of the maps for a fixed initial value. Now that we know the concept of an orbit we can define a <i>stable fixed point</i>, also defined as an attractor.
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Attractor:</span> A set of values towards which the orbits of a system tend to as the number of iterations increases, for a variety of initial values.<sup>[<a href="#extensionReference1">1</a>, p.148]</sup></p>
+                                    </div>
+                                <p>
+                                    This definition will be useful in the discussion concerning <i>strange attractors</i>. 
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Chaotic set:</span> All initial values of a discrete dynamical system which produce unstable orbits. An orbit is called unstable when for arbitrary close initial values the successive iterations can differ vastly.<sup>[<a href="#extensionReference1">1</a>, p.146]</sup></p>
+                                    </div>
+                                <p>
+                                    The chaotic set of a given map is a way of <i>quantifying</i> the chaotic properties of a map, as it describes the set of initial values close to which the function is very sensitive to changes. The final, and most interesting, definition, before moving on to a more concrete examination of specific maps is that of a strange attractor.
+                                </p>
+                                    <div class="definition">
+                                        <span class="w3-tooltip">
+                                        <p><b>(<b class="footnote">Chaotic</b>) Strange Attractor:</b> An attractor which displays fractal properties. They describe systems which are locally unstable but globally stable. We can also define this as an aperiodic recurrent attractor<sup>[<a href="#extensionReference2">2</a>]</sup>, which in essence means that even though the points do not display any periodicity the overall set displays fractal properties.<sup>[<a href="#extensionReference3">3</a>]</sup><sup>[<a href="#extensionReference4">4</a>]</sup>
+                                        </p>
+                                        <p>
+                                        <span class="w3-text">Non-chaotic strange attractors do exist but are beyond the scope of our research</span>
+                                        </p></span> 
+                                    </div>
+                                <p style="text-indent: 0;">
+                                    A few points regarding this definition are worth mentioning:
+                                    <ul style="padding-left: 5%;">
+                                        <li>The term strange, coined by mathematicians David Ruelle and Floris Takens, is used to emphasize the fact that a solid mathematical explanation for these attractors does not exist.</li>
+                                        <li>The antithetical states of local and global simply means that arbitrarily close initial values end up arbitrarily close together in the attractor, but before that they can end up being arbitrarily far apart.</li>
+                                    </ul>   
+                                </p>
+                                <h6>2. Two-Dimensional Maps</h6>
+                                <p>
+                                    The general formula<sup>[<a href="#extensionReference3">3</a>]</sup> for a two-dimensional map is:
+                                    \begin{equation}
+                                    \begin{aligned}
+                                        x_{n+1} & = F(x_n, y_n), \\
+                                        y_{n+1} & = G(x_n, y_n). 
+                                    \end{aligned}
+                                    \end{equation}
+                                </p>
+                                <p>
+                                    Here the $x_n$ and $y_n$ are independent variables and $F$,$G$ are known continuous functions. It should be quite clear that maps of two (or more) dimensions are more useful in representing natural phenomena than one-dimensional maps, since in nature multiple quantities vary over time. We will examine two such maps, the <b>H&eacute;non</b> map and the <b>Gingerbreadman</b> map. Before moving on, the reader should keep in mind that universal behaviours of such maps are very difficult to find and even more difficult to prove.<br>
+                                    The general theory<sup>[<a href="#extensionReference3">3</a>]</sup> of detecting the fixed orbits in a two-dimensional system is in general an extension of the theory for one-dimensional systems. In a two-dimensional system we need both the $\mathbb{X}$ and the $\mathbb{Y}$ to remain the same for all subsequent iterations so:
+                                    \begin{equation}
+                                        \mathbb{X}=f(\mathbb{X})
+                                    \end{equation}
+                                    becomes:
+                                    \begin{equation}
+                                    \begin{aligned} 
+                                        \mathbb{X} &=F(\mathbb{X},\mathbb{Y}) \\
+                                        \mathbb{Y} &=G(\mathbb{X},\mathbb{Y})
+                                    \end{aligned}
+                                    \end{equation}
+                                    Determining the stability of a point now becomes more complicated, as we need to examine the partial derivatives of each function with respect to each variable:
+                                    \begin{equation}
+                                        M = 
+                                        \left(\begin{array}{cc}
+                                        \frac{\partial F}{\partial x}&\frac{\partial F}{\partial y}\\
+                                        \frac{\partial G}{\partial x}&\frac{\partial F}{\partial y}
+                                        \end{array}\right)_{(\mathbb{X},\mathbb{Y})}
+                                    \end{equation}
+                                    and similarly to what we saw before, with the modulus of the derivative having to be less than 1, we would need that the absolute value of the eigenvalues of this matrix are less 1. It is easy to understand why this condition needs to hold by writing down the Taylor expansion of each of the two functions near $\mathbb{X}$ and $\mathbb{Y}$ and expressing the two in matrix form. As before we will only examine first order convergence, i.e. we will only keep the first firs order terms of the Taylor expansion.
+                                    \begin{equation}
+                                        \left(\begin{array}{ccc}
+                                        x_{n+1}-\mathbb{X}\\
+                                        y_{n+1}-\mathbb{Y}\\
+                                        \end{array}\right)
+                                        \approx
+                                        M
+                                        \left(\begin{array}{ccc}
+                                        x_{n}-\mathbb{X}\\
+                                        y_{n}-\mathbb{Y}\\
+                                        \end{array}\right)
+                                    \end{equation}
+                                    If we have that the eigenvalues of the matrix of derivatives are less than 1 then the matrix of equation $(5)$ goes to the zero matrix as the number of iteration increases and thus we get that:
+                                    \begin{equation}
+                                        \left(\begin{array}{ccc}
+                                            x_{n+1}-\mathbb{X}\\
+                                            y_{n+1}-\mathbb{Y}\\
+                                        \end{array}\right)
+                                        \to
+                                        \left(\begin{array}{ccc}
+                                            0\\
+                                            0\\
+                                        \end{array}\right)
+                                    \end{equation}
+                                    i.e. that $x_{n+1}\to\mathbb{X}$ and $y_{n+1}\to\mathbb{Y}$
+                                </p>
+                            </div>
+                            <div id="examples" class="chapter">
+                                <h3>Examples</h3><br>
+                                <h6>1. Additions in the Verhulst map</h6>
+                                <p>
+                                    There was a passing reference to the Feigenbaum Constants in the previous section. Although this concept is unrelated to chaotic maps of higher than one dimension, it is a universal characteristic of one-dimensional maps.<sup>[<a href="#extensionReference5">5</a>]</sup><sup>[<a href="#extensionReference6">6</a>]</sup> As it is much harder to find and prove universal characteristics in higher dimensional maps, we thought that it would be of significance to explore in more detail such characteristics in one-dimensional maps.
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Universality:</span> The existence of properties that appear in a large class of dynamical systems, independent of each system itself.<sup>[<a href="#extensionReference7">7</a>]</sup></p>
+                                    </div>
+                                <p>
+                                    In a previous section we defined one-dimensional systems as:
+                                    \begin{equation}
+                                        x_{n+1} = f(x_n),
+                                    \end{equation} 
+                                    but universal properties render $f$ superfluous. 
+                                 <br>  
+                                    The two Feigenbaum constants $\delta$ and $\alpha$ are universal constants for functions approaching chaos through continuous bifurcations.
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">First Feigenbaum Constant ($\delta$):</span> The limit of the length of $r$ intervals between consecutive bifurcations.<sup>[<a href="#extensionReference8">8</a>]</sup></p>
+                                    </div>
+                                <p>
+                                    This number offers us a geometric understanding of the period doubling in the Logistic map. We can express $\delta$ through the formula:
+                                    \begin{equation}
+                                        \delta =\lim_{i\to\infty} \frac{\Delta_{i+1}}{\Delta_{i}},
+                                    \end{equation}<sup>[<a href="#extensionReference3">3</a>]</sup>
+                                    where $\Delta_i$ is the intervals between the i<sup>th</sup>and the (i-1)<sup>th</sup> period-doubling and $\Delta_{i+1}$ the interval between the (i+1)<sup>th</sup> and the i<sup>th</sup> period doubling. We can easily show with numerical methods on our map that $\delta$ does indeed tend to the value that Feigenbaum determined<sup>[<a href="#extensionReference9">9</a>]</sup>, i.e.:
+                                    \begin{equation}
+                                        \delta = 4.6692016091... 
+                                    \end{equation} 
+                                    The importance of this value should not be overlooked. Intuitively $\delta$ says that one-dimensional  systems such as the ones we have examined all go to chaos at the same rate.
+                                    The second Feigenbaum constant $\alpha$ involves the lengths of successive tines in the bifurcation plot\footnote{wolfram} and has been determined<sup>[<a href="#extensionReference10">10</a>]</sup> to be:
+                                    \begin{equation}
+                                        \alpha = 2.502907850958... 
+                                    \end{equation} 
+                                    The universality of the two constants has been proven and the original proof involved the aid of a computer system.<sup>[<a href="#extensionReference11">11</a>]</sup>
+                                </p>
+
+
+                                <h6>2. H&eacute;non map</h6>
+                                <p>
+                                    The first two-dimensional map we will examine is the H&eacute;non map, which models the evolution of two variables, $x_n$ and $y_n$ by the following system of equations: 
+                                    \begin{equation}
+                                    \begin{aligned}
+                                        x_{n+1} & = 1+y_n+Ax_n^2 \\
+                                        y_{n+1} & = Bx_n,
+                                    \end{aligned}
+                                    \end{equation}
+                                    where $A$ and $B$ are fixed parameters. Despite mentioning beforehand that two-dimensional maps can model nature more accurately than their lower dimensional counterparts it should be noted here that the H&eacute;non map has no natural importance. It was formulated by French mathematician and astrologist Michel H&eacute;non in 1976 in order to offer a simplified visualization of the Lorenz System.
+                                <br>
+                                    H&eacute;non set the values of the parameters to $A = 1.4$ and $B = 0.3$ <sup>[<a href="#extensionReference12">12</a>]</sup> for which the map displays chaotic properties. It has been determined that for other parameter values the map does not display such properties.<sup>[<a href="#extensionReference3">3</a>, p.147]</sup> The orbit of the map depends on the initial conditions as for some conditions the map explodes and the orbits tend to $\infty$<sup>[<a href="#extensionReference3">3</a>]</sup>. However numerical analysis has shown that for all initial points, for which the map does not go to infinity, the obits converge to the same strange attractor. For example with the initial points $(0,0)$ and $(1,0)$ we will end up with the same strange attractor shown in the figure below:
+                                </p>
+                                    <div class="figure">
+                                        <img src="images/HenonFull.png" class="w3-card-8 w3-center"/>
+                                        <span class="caption"><i>Figure 1.</i> The strange attractor of the H&eacute;non map, with parameters $A = 1.4$ and $B = 0.3$</span>
+                                    </div>
+                                <p>
+                                    This derivation is all but rigorous and although the chaotic dynamic of the map has been rigorously proven<sup>[<a href="#extensionReference13">13</a>]</sup> the actual existence of this strange attractor has never been actually proven.<sup>[<a href="#extensionReference14">14</a>]</sup> In fact this could be a result of long, attracting cycles. This implies that our numerical analysis should not be considered definitive. The <i>strangeness</i> of this attractor lies in the fact that it is not a simple point or a cycle of points but a fractal-like structure, whose exact properties remain an open problem in mathematics.<sup>[<a href="#extensionReference1">1</a>]</sup>
+                                </p>
+                                    <div class="figure">
+                                        <img src="images/henonWithZoom.png" class="w3-card-8 w3-center"/>
+                                        <span class="caption"><i>Figure 2.</i> The fractal properties of the strange attractor in the H&eacute;non map </span>
+                                    </div>
+                                <p>
+                                    If we go back to the definition of a strange attractor we can see that the H&eacute;non map perfectly displays the property of local instability along with global stability. For distinct orbits (whose initial conditions converge) the first few hundred iterations  vary vastly, but the overall image of the system is identical.
+                                </p>
+                                    <div class="figure">
+                                        <img src="images/HenonBasin.png" class="w3-card-8 w3-center"/>
+                                        <span class="caption"><i>Figure 3.</i> The first 200 iterations of the H&eacute;non map with initial conditions (1,1) (Green) and (0,0) (Red)</span>
+                                    </div>
+                                <p>
+                                    Shifting our focus from the strange attractor to the bifurcation properties of the map we can examine the H&eacute;non map with the already established theory in mind (from <sup>[<a href="#extensionReference3">3</a>]</sup> and <sup>[<a href="#extensionReference14">14</a>]</sup>) to get that first of all the fixed points are:
+                                    \begin{equation}
+                                    \begin{aligned}
+                                        \mathbb{X}_\pm &=\frac{-(1-B)\pm \sqrt{(1-B)^2+4A}}{2A} \text{,  and} \\
+                                        \mathbb{Y}_\pm &= B\mathbb{X}_\pm
+                                    \end{aligned}
+                                    \end{equation}
+                                    Using the formula in $(5)$ we can determine that for $A<\frac{3}{4}(1-B)^2$ one of the two points is stable and the other is unstable, but when $A>\frac{3}{4}(1-B)^2$ both the points are unstable. Similar to a one-dimensional map we once again have a bifurcation which leads to a two cycle, and we need to consider a fairly complicated formula to determine the new points. Namely:
+                                    \begin{equation}  
+                                    \begin{aligned}
+                                        \mathbb{X} &=F[F(\mathbb{X},\mathbb{Y}),G(\mathbb{X},\mathbb{Y})] \\
+                                        \mathbb{Y} &=G[F(\mathbb{X},\mathbb{Y}),G(\mathbb{X},\mathbb{Y})]
+                                    \end{aligned}
+                                    \end{equation}
+                                    We will not offer any further analytical examination of this map, but we will end this section with the obvious observation that if we set $B = 0$ in $(11)$ we get the logistic map which through a change of variables can be transformed to the Verhulst map we have already examined.<sup>[<a href="#extensionReference3">3</a>]</sup>
+                                </p>
+
+                                <h6>3. Gingerbreadman map</h6>
+                                <p>
+                                    Finally we will examine the Gingerbreadman map, which is given by the equations: 
+                                    \begin{equation}  
+                                    \begin{aligned}
+                                        x_{n+1} &= 1 - y_n + |x_n|\\
+                                        y_{n+1} &= x_n
+                                    \end{aligned}
+                                    \end{equation}
+                                    One can easily observe that the point $(1,1)$ is a fixed point and it has been determined analytically that all points within the hexagonal region $(0,0), (1,0), (2,1), (1,2), (0,1), (2,2)$ are periodic with period <sup>[<a href="#extensionReference1">1</a>]</sup>. This means that for these initial values the Gingerbreadman plot is a single (stable) point and a hexagon with vertices within the aforementioned region, respectively. 
+                                </p>
+                                    <div class="figure">
+                                        <img src="images/6Period.png" class="w3-card-8 w3-center"/>
+                                        <span class="caption"><i>Figure 4.</i> The 6-cycle periodic attractor of the Gingerbreadman map, with initial value (1,2)</span>
+                                    </div>
+                                <p>
+                                    As we move outside this region the behaviour of the map becomes chaotic.
+                                </p>
+                                    <div class="figure">
+                                        <img src="images/(0, 1.01)Ging.png" class="w3-card-8 w3-center"/>
+                                        <span class="caption"><i>Figure 5.</i> The Chaotic behaviour of the Gingerbreadman map, here with initial condition (0.1,1.01)</span>
+                                    </div>
+                                <p>
+                                <br>
+                                    By trying to find a qualitative relation between the initial condition and the orbits of the map we found that for initial values $(-0.5, -0.5)$ the points of the map orbit between 5 separate hexagons in a 30-Cycle, which one can visualize as the limbs and the head of the Gingerbread man. 
+                                 </p>
+                                    <div class="figure">
+                                        <img src="images/30Period.png" class="w3-card-8 w3-center"/>
+                                        <span class="caption"><i>Figure 6.</i> The Gingerbreadman map with initial condition (-0.5,-0.5) </span>
+                                    </div>
+                                <p>
+                                    As we approach these values from either side we can see that the spread of the points gravitates towards the attracting hexagons. However one more hexagon is visible - the body of the gingerbread man, or the centre hexagon. 
+                                </p>
+                                    <div class="figure">
+                                        <img src="images/GingerBread(-0.5,-0.49).png" class="w3-card-8 w3-center"/>
+                                        <span class="caption"><i>Figure 7.</i> The Gingerbreadman map with initial condition (-0.5,-0.49) </span>
+                                    </div>
+
+                            <div id="applications" class="chapter">
+                                <h3>Applications</h3><br>
+                                <h6>Pseudo-random number generator</h6>
+                                <p>
+                                    Regarding the real-word applications of dynamical systems, it is remarkable how we can take advantage of their chaotic behaviour in the process of generating random numbers. Following with the focus in two-dimensional maps in this section, we'll go through a chaotic pseudo-random number generator (cPRNG) based on the Tinkerbell map which will serve as an example.
+                                </p>
+                                <p style="text-indent: 0;">
+                                    The Tinkerbell map<sup>[<a href="#extensionReference15">15</a>]</sup> is defined as follows:
+                                    \begin{equation}
+                                    \begin{split}
+                                        x_{n+1} &= x_{n}^2 - y_{n}^2 + ax_{n} + by_{n} \\
+                                        y_{n+1} &= 2x_{n}y_{n} + cx_{n} + dy_{n},
+                                    \end{split}
+                                    \end{equation}
+                                    where $a=0.9$, $b=-0.6013$, $c=2.0$ and $d=0.5$ are commonly used values and will be the values considered in the development and testing of the algorithm.
+                                </p>
+                                <h6 style="font-size: 1em">1. The algorithm</h6>
+                                <p style="text-indent: 0;">
+                                    Based on <sup>[<a href="#extensionReference16">16</a>]</sup> and <sup>[<a href="#extensionReference17">17</a>]</sup>, consider two independent Tinkerbell maps:
+                                    \begin{equation}
+                                    \begin{split}
+                                        x_{n+1} &= x_{n}^2 - y_{n}^2 + ax_{n} + by_{n} \\
+                                        y_{n+1} &= 2x_{n}y_{n} + cx_{n} + dy_{n}\\
+                                        \hat{x}_{m+1} &= \hat{x}_{m}^2 - y_{m}^2 + a\hat{x}_{m} + b\hat{y}_{m} \\
+                                        \hat{y}_{m+1} &= 2\hat{x}_{m}\hat{y}_{m} + c\hat{x}_{m} + d\hat{y}_{m},
+                                    \end{split}
+                                    \end{equation}
+                                    in which $x_{0}$, $y_{0}$, $\hat{x}_{0}$ and $\hat{y}_{0}$ are determined and used as our generation key. We'll consider a precision of 9 decimal places for these values. The key also includes two different integers $N$ and $M$ which represent the number of initial iterations through each map.
+                                </p>
+                                <p style="text-indent: 0;">
+                                    At this point we proceed in the following way:
+                                    <ol style="padding-left: 5%;">
+                                        <li>Iterate $N$ times the first Tinkerbell map from Eqs. (3).</li>
+                                        <li>Iterate $M$ times the second Tinkerbell map from Eqs. (3).</li>
+                                        <li>We continue with the iterations generating two bits $b_{i}$ and $b_{j}$ given by:
+                                        \begin{align*}
+                                            b_{i} &= |\lfloor y_{n} \times 10^9 \rfloor \mod 2|\\
+                                            b_{j} &= |\lfloor \hat{y}_{n} \times 10^9 \rfloor \mod 2|,
+                                        \end{align*}
+                                        and ultimately outputing them. It should be mentioned that there are variations of this algorithm such as performing a XOR operation to these bits but won't be considered for this example.</li>
+                                        <li>Return to step 3 until a bit stream of the required size is generated.</li>
+                                    </ol>
+                                </p>
+                                    <div class="definition">
+                                        <p><span style="font-weight: 700">Key space:</span> The set of all possible keys that can be used as initial seed in a pseudo-random generator.</p>
+                                    </div>
+                                <p>
+                                    It can be inferred from the 6 different keys used that this pseudo-random scheme will have a relatively large key space which the authors B. Stoyanov and K. Kordov estimate at $2^{138}$. However, due to the nature of our research, we'll focus on the key sensitivity i.e., how small changes in the initial values cause a big variations in the final result.
+                                </p>
+                                <p style="text-indent: 0;">
+                                    In order to illustrate that, we have created a Python script that simulates the generation of 16-bit strings with the arbitrarily chosen initial values $x = -0.145622309$, $y = -0.742799703$, $\hat{x} = -0.634155080$ and $\hat{y} = -0.332344590$. The initial iterations are set at $M = 730$ and $N = 830$. Then:
+                                    \begin{array}{ |c|c|c| } 
+                                    \hline
+                                    Variation & Result & Change \%\\
+                                    \hline
+                                    None & 0111100010010100 & 0\% \\ 
+                                    x, \hat{x} \mathrel{+}= 10^{-9} & 1001010011000010 & 37.50\%\\ 
+                                    y, \hat{y} \mathrel{+}= 10^{-9} & 0010011111111110 & 56.25\%\\ 
+                                    x, y \mathrel{+}= 10^{-9} & 1101101010010110 & 43.75\%\\ 
+                                    \hat{x}, \hat{y} \mathrel{+}= 10^{-9} & 0111100010000101 & 12.50\%\\ 
+                                    \hline
+                                    \end{array}
+                                    These results exhibit the sensitivity to initial conditions that chaotic systems and shows why due to their unpredictable behaviour, they can have an application in the field of cryptography.
+                                </p>
+
+                                <h6>Communication Using Chaos Encryption</h6>
+                                <p>
+                                Edward Lorenz proposed the now famous system of three coupled differential equations:<sup>[<a href="#extensionReference19">19</a>]</sup><sup>[<a href="#extensionReference20">20</a>]</sup>
+                                \begin{equation}
+                                \begin{aligned}
+                                \frac{dx}{dt} &= \sigma(y-x)\\
+                                \frac{dy}{dt} &= x(\rho-z)-y\\
+                                \frac{dz}{dt} &=xy - \beta z\\
+                                \end{aligned}
+                                \end{equation} 
+                                In 1963, as a simplified model of heat transfer in a slab of fluid<sup>[<a href="#extensionReference3">3</a>]</sup>. We will not offer a more thourough analysis of this system, as our focus lies mainy in discrete systems but the significance of this system in chaos theory should not be overlooked. It was through this system and the variations in its initial conditions that Lorenz first discovered what we now know as chaos theory. The system displays both an initial value sensitivity and a chaotic attractor (the phase portrait of the trajectories resembles a butterfly in $x,y,z$).
+                                </p>
+
+                              <!--   <div class="figure">
+                                    <canvas id="MandelbrotCanvas" width="900" height="600" style="border:2px solid; display: block;"></canvas>
+                                    <button style="position: absolute; left: 0px; top: 0px; " class="w3-btn" onClick="ResetMandelbrot()"><i class="fa fa-refresh" style="color: white;"></i></button></button>
+                                    <span class="caption">dsfgsergesrgsrdg.</span>
+                                </div>
+
+                                <p style="z-index: 1000;">
+                                    The H&eacute;non map which we have already examined is a simplification of the 
+                                    <span class="w3-tooltip" style="position: relative;"><strong class="footnote">Poincar&eacute; section</strong><span class="w3-text footUp">
+                                    Additional information, beyond the scope of our presentation can be found at: <a href="http://chaosbook.org/chapters/maps.pdf">http://chaosbook.org/chapters/maps.pdf</a> (Section 1) and <a href="http://www4.ncsu.edu/~schecter/ma_732_sp13/teschl_ode.pdf">Ordinary Differential Equations and Dynamical Systems, Gerald Teschl</a> (Section 6.4)
+                                    </span></span>. of the 
+                                    Lorenz system<sup>[<a href="#extensionReference18">18</a>]</sup>  and H&eacute;non developed his map as a way of more easily visualizing the Lorenz System<sup>[<a href="#extensionReference19">19</a>]</sup>  . This explains why the two systems are so closely related and why they both display strange attractor properties for specific initial values.
+                                      
+                                </p>
+
+                                <p>
+                                    A modern approach of applying Chaos Theory to the field of cryptography, was discovered in the early 1990<sup>[<a href="#extensionReference20">20</a>]</sup>. Louis Pecora and Thomas Carrol described the 
+
+                                    <span class="w3-tooltip"><strong class="footnote">Synchronization Properties</strong><span class="w3-text footDown">
+                                    For additional information one could start with <a href="https://www.pik-potsdam.de/members/kurths/publikationen/2002/the-synchronization-of-chaotic-systems/">The Synchronization of Chaotic Systems</a> (Sections 1,2)
+                                    </span> of Chaotic systems
+                                    and found a theoretical application of this property in secure communication. The very idea of two chaotic systems being synchronized was doubted for a long time as the main argument was that the key property of a chaotic system is that it is highly dependent on the initial conditions. This implies that a small interferences in transferred data would lead to exponential divergences between the original data sent and data received.
+                                    </span> -->
+                                    <div class="figure">
+                                        <img src="images/butterfly.png" class="w3-card-8 w3-center" width="900"/>
+                                        <span class="caption"><i>Figure 8.</i> Lorenz system.<sup>[<a href="#extensionReference18">18</a>]</sup></span>
+                                    </div>
+                                <p>
+                                The H&eacute;non map which we have already examined is a simplification of the Poincar&eacute; section of the Lorenz system and H&eacute;non developed his map as a way of more easily visualizing the Lorenz System.<sup>[<a href="#extensionReference21">21</a>]</sup> This explains why the two systems are so closely related and why they both display strange attractor properties for specific initial values.
+                                </p>
+
+                                <p>
+                                A modern approach of applying Chaos Theory to the field of cryptography, was discovered in the early 1990<sup>[<a href="#extensionReference22">18</a>]</sup> . Louis Pecora and Thomas Carrol described the <b>Synchronization Properties</b>. The very idea of two chaotic systems being synchronized was doubted for a long time as the main argument was that the key property of a chaotic system is that it is highly dependent on the initial conditions.</p>
+
+                                <p>
+
+                                
+                                Chaotic encryption is an example of symmetric encryption<sup>[<a href="#extensionReference23">23</a>]</sup> with a system  involving a sender,receiver and a key shared by both parties. Lorenz's equations serve as the chaotic system for this method<sup>[<a href="#extensionReference24">24</a>]</sup> , with the key as the three constants $\beta,\rho,\sigma$. The Senders Lorenz system, A, iterates with time as usual. The Receiver's Lorenz System, B, is slightly different and is governed by following equations:
+                                \begin{equation}
+                                \begin{aligned}
+                                \frac{dX_A}{dt} &= \sigma(Y_A-X_A)\\
+                                \frac{dY_A}{dt} &= X_A(\rho-Z_A)-Y_A\\
+                                \frac{dY_A}{dt} &=X_AY_A - \beta Z_A\\
+                                \end{aligned}
+                                \end{equation} 
+                                Notice that instead of B using its own $X_B$, it uses the $X$ value of A, $X_A$. Surprisingly this input alone causes them to be synchronised, despite differing initial conditions.<br>
+                                Once systems are synchronised we can begin to send our message, $M$. Now, instead of using $X_A$ as an input for B, we send $S=M+X_A$, keeping $M$ relatively small compared to $X_A$. Now $M$ is <i>masked</i> by the chaotic variable $X_A$. Anyone intercepting the message would be unable to extract the original message $M$. Despite the random input of $M$ to B, synchronisation is preserved. After B has iterated with $S$ as $X_A$, the original message can be founded by subtracting the new value of $X_B$ which is equal to the value if $X_A$ after a single iteration from $S$, as seen below:
+                                \begin{equation}
+                                \begin{aligned}
+                                S = X_A + M\text{ and }
+                                \lim_{t\to\infty} X_B &= X_A
+                                \text{ give } \\
+                                M = X_B - S,
+                                \end{aligned}
+                                \end{equation}
+                                where the time $t$ is directly proportional the number of iterations. Thus, the chaotic element of $S$, namely $X_t$ is removed to reveal the original message.
+                                We implemented this by encrypting images using the Lorenz attractor with values:
+                                \begin{equation}
+                                \begin{aligned}
+                                \sigma &= 10 \\
+                                \rho &= 28 \\
+                                \beta &= \frac{8}{3}\\
+                                \end{aligned}
+                                \end{equation}
+                                This applet LINK allows the user to choose the number of iterations used to synchronise A and B before transmission begins. Observe that if they are not allowed to synchronise for long enough, the message is lost in transmission and the recovered image is incomplete.
+                                Since (18) cannot be analytically solved, the applet uses Euler's method extended to 3D<sup>[<a href="#extensionReference25">25</a>]</sup><sup>[<a href="#extensionReference18">18</a>]</sup>.
+                                  <br> This applet aims not to provide a practical chaotic encrypter, but merely to display the effects of chaos in encryption.
+                            </p>
+                            <div class="figure">
+                                    <!-- <img src="images/arisFunny.jpg" id="arisfunny" style="display:none"/> -->
+                                    <div id="animation" class="canvases" style="display: none;" >
+                                        <canvas id="imageCanvas" style="border:2px solid;"></canvas>
+                                        <canvas id="receivedCanvas" style="border:2px solid;"></canvas>
+
+                                        <p style="font-weight:bold;">Iteration Values: <span id="RValue"></span> , t: <span id="RValuext"></span>.</p>
+                                        <div class="slider" id="sliderRValue"></div><br>
+                                    </div>
+                                    <button class="w3-btn"><i class="fa fa-refresh fa-upload" style="color: white;"></i> Upload an image</button>
+                                    <input type="file" id="imageLoader" name="imageLoader" accept="image/*" style="display: none" /><br>
+                                </div>
+                            </div>
+                            </div>
+                            <hr style="border-color:#2e3842">
+                        <div id="extensionReferences" class="references">
+                            <h4>References</h4>
+                            <ol type="1">
+                                <li id="extensionReference1">Peitgen HO, Saupe D, Barnsley M. The Science of fractal images. Springer-Verlag; 1988.</li>
+                                <li id="extensionReference2"> Mainieri R, Cvitanovic P, Spiegel EA. Go with the flow; 2007. [Online; accessed 13-March-2016]. Available from: <a href="http://www.cns.gatech.edu/~predrag/courses/PHYS-7224-07/flows.pdf" target="_blank">http://www.cns.gatech.edu/~predrag/courses/PHYS-7224-07/flows.pdf</a>.</li>
+                                <li id="extensionReference3"> Kibble T, Berkshire F. Classical Mechanics, 5th edition (Greek version). London, UK: Imperial College Press; 2004. p. 360-376.</li>
+                                <li id="extensionReference4"> Wikipedia. Attractor - Wikipedia, The Free Encyclopedia; 2016. [Online; accessed 14-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Attractor&oldid=708780931" target="_blank">https://en.wikipedia.org/w/index.php?title=Attractor&oldid=708780931</a>.</li>
+                                <li id="extensionReference5"> Lynch S. Dynamical Systems With Applications Using Mathematica. Boston, MA: Birkhauser; 2007. Chapter 12.</li>
+                                <li id="extensionReference6"> Yang J. Universality;. [Online; accessed 13-March-2016]. Available from: <a href="http://www.emba.uvm.edu/~jxyang/teaching/Math266notes7.pdf" target="_blank">http://www.emba.uvm.edu/~jxyang/teaching/Math266notes7.pdf</a>.</li>
+                                <li id="extensionReference7"> Wikipedia. Universality (dynamical systems) - Wikipedia, The Free Encyclopedia; 2016. [Online; accessed 14-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Universality_(dynamical_systems)&oldid=704911474" target="_blank">https://en.wikipedia.org/w/index.php?title=Universality_(dynamical_systems)&oldid=704911474</a>.</li>
+                                <li id="extensionReference8"> Weisstein E. Feigenbaum Constant.;. [Online; accessed 13-March-2016]. From MathWorld - A Wolfram Web Resource. Available from: <a href="http://mathworld.wolfram.com/FeigenbaumConstant.html" target="_blank">http://mathworld.wolfram.com/FeigenbaumConstant.html</a>.</li>
+                                <li id="extensionReference9"> Decimal expansion of Feigenbaum bifurcation velocity.;. [Online; accessed 14-March-2016]. Available from: <a href="https://oeis.org/A006890" target="_blank">https://oeis.org/A006890</a>.</li>
+                                <li id="extensionReference10"> Decimal expansion of Feigenbaum reduction parameter.;. [Online; accessed 14-March-2016]. Available from: <a href="https://oeis.org/A006891" target="_blank">https://oeis.org/A006891</a>.</li>
+                                <li id="extensionReference11"> Devaney RL. A piecewise linear model of the zones of instability of an area-preserving map; 2013. [Online; accessed 14-March-2016]. Available from: <a href="http://bit.ly/1P80mKG" target="_blank">http://bit.ly/1P80mKG</a>.</li>
+                                <li id="extensionReference12"> Weisstein E. Henon Map.;. [Online; accessed 13-March-2016]. From MathWorld - A Wolfram Web Resource. Available from: <a href="http://mathworld.wolfram.com/HenonMap.html" target="_blank">http://mathworld.wolfram.com/HenonMap.html</a>.</li>
+                                <li id="extensionReference13"> Annals of mathematics. 1991;(133):73-169.</li>
+                                <li id="extensionReference14"> Wen H. A review of the Henon map and its physical interpretations; 2014. [Online; accessed 14-March-2016]. Available from: <a href="http://chaosbook.org/projects/Wen14.pdf" target="_blank">http://chaosbook.org/projects/Wen14.pdf</a>.</li>
+                                <li id="extensionReference15"> Wikipedia. Tinkerbell map - Wikipedia, The Free Encyclopedia; 2013. [Online; accessed 13-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Tinkerbell_ map&oldid=576264569" target="_blank">https://en.wikipedia.org/w/index.php?title=Tinkerbell_ map&oldid=576264569</a>.</li>
+                                <li id="extensionReference16"> Borislav Stoyanov KK. Novel Secure Pseudo-Random Number Genera- tion Scheme Based on Two Tinkerbell Maps; 2015. [Online; accessed 13-March-2016]. Available from: <a href="http://www.m-hikari.com/astp/astp2015/astp9-12-2015/p/stoyanovASTP9-12-2015.pdf">http://www.m-hikari.com/astp/astp2015/astp9-12-2015/p/stoyanovASTP9-12-2015.pdf</a>.</li>
+                                <li id="extensionReference17"> Borislav Stoyanov KK. Pseudo-random Bit Generation Algorithm Based on Chebyshev Polynomial and Tinkerbell Map; 2014. [Online; ac- cessed 13-March-2016]. Available from: <a href="http://www.m-hikari.com/ams/ams-2014/ams-125-128-2014/stoyanovAMS125-128-2014.pdf" target="_blank">http://www.m-hikari.com/ams/ams-2014/ams-125-128-2014/stoyanovAMS125-128-2014.pdf</a>.</li>
+                                
+                                <li id="extensionReference18">Lorenz System 3D;. Available from: <a href="https://logicaltightrope.files.wordpress.com/2013/08/lorenz3dview2.png">https://logicaltightrope.files.wordpress.com/2013/08/lorenz3dview2.png</a>.</li>
+                                <li id="extensionReference19">Yang J. Chaos: Lorenz equations, Strange attractors and Fractals.;. [Online; accessed 15-March-2016]. Available from: <a href="http://www.emba.uvm.edu/~jxyang/teaching/Math266notes13.pdf">http://www.emba.uvm.edu/~jxyang/teaching/Math266notes13.pdf</a>.</li>
+                                <li id="extensionReference20">Yang J. Chaos: Lorenz equations, Strange attractors and Fractals.;. [Online; accessed 15-March-2016]. Available from: <a href="http://www.emba.uvm.edu/~jxyang/teaching/Math266notes13.pdf" target="_blank">http://www.emba.uvm.edu/~jxyang/teaching/Math266notes13.pdf</a>.</li>
+                                <li id="extensionReference21">YouTube. MAE5790-24 Hnon map; 2014. [Online; accessed 15- March-2016]. Available from: <a href="https://www.youtube.com/watch?v=LPILtK-53m8" target="_blank">https://www.youtube.com/watch?v=LPILtK-53m8</a>.</li>
+                                <li id="extensionReference22">Pecora L, Carroll T. Synchronization in Chaos Systems.; 1990. [Online; accessed 15-March-2016]. Available from: <a href="http://www.math.pitt.edu/~bard/classes/mth3380/syncpapers/pecora-sync-chaos.pdf" target="_blank">http://www.math.pitt.edu/~bard/classes/mth3380/syncpapers/pecora-sync-chaos.pdf</a>.</li>
+                                <li id="extensionReference23">Wikipedia. Chaotic cryptology — Wikipedia, The Free Ency- clopedia; 2015. [Online; accessed 15-March-2016]. Available from: <a href="https://en.wikipedia.org/w/index.php?title=Chaotic_cryptology&oldid=657599836" target="_blank">https://en.wikipedia.org/w/index.php?title=Chaotic_cryptology&oldid=657599836</a>.</li>
+                                <li id="extensionReference24">Wikipedia. Chaos communications — Wikipedia, The Free En- cyclopedia; 2013. [Online; accessed 15-March-2016]. Avail- able from: <a href="https://en.wikipedia.org/w/index.php?title=Chaos_communications&oldid=587306661">https://en.wikipedia.org/w/index.php?title=Chaos_communications&oldid=587306661</a>.</li>
+                                <li id="extensionReference25">Simplifications of the Lorenz Attractor.; 2013. [Online; accessed 15- March-2016]. Available from: <a href="http://logicaltightrope.com/2013/09/01/sending-your-secrets-safely-with-chaos/" target="_blank">http://logicaltightrope.com/2013/09/01/sending-your-secrets-safely-with-chaos/</a>.</li>
+                                <li id="extensionReference26">PROGRAMMING THE LORENZ ATTRACTOR;. [Online; ac- cessed 15-March-2016]. Available from: <a href="http://www.algosome.com/ articles/lorenz-attractor-programming-code.html" target="_blank">http://www.algosome.com/ articles/lorenz-attractor-programming-code.html</a>.</li>
+                            </ol>
+                        </div>
+                </section>
+
+            </main>
+            
+    </body>
+</html>
